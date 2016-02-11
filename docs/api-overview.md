@@ -2,7 +2,7 @@
 layout: documentation
 title: API Overview | iMoneza Documentation
 ---
-##API OVERVIEW
+## API OVERVIEW
 
 There are two APIs that iMoneza makes available to CMS plugins.  
 
@@ -13,17 +13,17 @@ Both APIs exposes a set of RESTful services that serialize data to common format
 
 Both APIs are protected by a hashed authentication token calculated for each request. API operations also occur over an SSL connection. Every API consumer must generate a set of API keys (which only a property administrator can do) before it can be used. API keys are tied to a specific property, so the keys aren’t tied to specific plugins but to plugin instances. For instance, if someone creates a Drupal plugin that uses this API, no API keys are required for the plugin itself. However, every property that implements the plugin will need a property administrator to generate a set of API keys (an access key and a secret key) for it.  
 
-###DATA FORMATS
+### DATA FORMATS
 
 The APIs support both JSON and XML data. When a client makes an API request, the HTTP “Content-Type” header is used to indicate the format of the payload. Likewise, the client can use the “Accept” header to indicate the format of the data returned from the call. Values of “application/json” and “text/json” will return JSON; values of “application/xml” and “text/xml” will return XML.
 
-###API KEYS
+### API KEYS
 
 An iMoneza property can have an unlimited number of API key sets issued by iMoneza. Each key set consists of an access key and a secret key. The access key can be shared, but the secret key should never appear in any public code or be shared with any third-party. Property administrators can revoke key sets at any time.
 
 All Resource Management API keys for a property have the same permissions for that property, allowing access to the full set of Resource Management API features. Likewise, all Resource Access API keys for a property have the same permissions for that property. However, Resource Access API keys cannot be used on the Resource Management API and vice versa.
 
-###AUTHENTICATION TOKEN
+### AUTHENTICATION TOKEN
 
 Every API request must include an authentication token. Requests without a token or with an invalid token return a 401 error.
 
