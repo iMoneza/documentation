@@ -22,7 +22,17 @@
     <a href="/"><img src="https://imoneza.github.io/images/imoneza-logo.png" alt="logo"></a>
   </header>
   <main class="container">
-    {{ content }}
+    <div class="row">
+      <div class="col-xs-12 col-md-3 col-md-push-9">
+        <h3>Table of Contents</h3>
+        {% capture toc %}{% include toc.md %}{% endcapture %}
+        {{ toc | markdownify }}
+      </div>
+      <div class="col-xs-12 col-md-9 col-md-pull-3">
+        <h1><a href="{{ "/" | prepend:site.baseurl }}">iMoneza Documentation</a></h1>
+        {{ content }}
+      </div>
+    </div>
   </main>
   <footer class="container">
     <div class="row">
