@@ -51,6 +51,11 @@ main {
 .fa.large-logo {
     font-size: 6rem;
 }
+header {
+    background: #ffffff;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eeeeee;
+}
 footer {
     background-color: #252525;
     color: #777777;
