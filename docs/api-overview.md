@@ -64,3 +64,31 @@ In the second example, here’s what the final HTTP request looks like:
     Connection: Keep-Alive
 
 The response does not contain any token or hash.
+
+### CALLBACKS
+
+The Management API allows merchants to expose endpoints to which iMoneza can initiate a connection when an event occurs. The merchant provides a callback URL to iMoneza, and iMoneza makes a call to this URL to notify the merchant of an event. This effectively allows for push notifications.
+
+When a merchant creates a Management API key, they can also define a merchant-hosted endpoint for API callbacks. There’s a single callback URL; all calls that iMoneza makes to that URL will include an identifier of the type of callback being performed. Exactly one callback URL is allowed for every Management API key. If a merchant needs more than one callback URLs, they can create additional API keys.
+
+When iMoneza calls the merchant-hosted callback URL, it includes two bits of data – a callback type and a token. No event-specific data is included in the request. The merchant then calls an endpoint on the iMoneza API that accepts an event type and token as a parameter; iMoneza then returns data specific to the callback event.
+
+An example execution flow looks like:
+
+1. Merchant requests an external subscriber import
+  1. Merchant calls `POST /api/Property/{apiKey}/ExternalSubscriberImport`
+    1. iMoneza returns an unique ID
+2. iMoneza process the import
+3. Upon completion, iMoneza makes a request to the merchant’s callback URL
+  1. iMoneza calls `GET {merchantCallbackURL}?CallbackType=ExternalSubscriberImportCompleted&CallbackToken={callbackToken}`
+  2. Merchant returns an HTTP 200
+4. Merchant requests the callback results
+  1. Merchant calls `GET /api/Property/{apiKey}/CallbackResult/{callbackToken}`
+  2. iMoneza returns the callback result data
+  3. The callback result data includes the ID iMoneza originally sent in step 1.a.i.
+  
+The merchant-hosted callback endpoint must use HTTPS, not HTTP. iMoneza will apply the same HMAC tokenization scheme to all requests to the merchant that the merchant is required to use for requests to iMoneza, with iMoneza using the same access key/secret key combination. For the merchant’s own security, it is very strongly recommended that the merchant verify the HMAC token on every request. Failure to do so leaves the merchant’s web service vulnerable to certain types of attacks, like replay attacks.
+
+Merchants should return an HTTP status of “200 OK” when they receive a callback from iMoneza. Other status codes indicate failure; individual failed callbacks will be repeated up to 2 additional times. After a given callback fails 3 times, iMoneza will cease to attempt making sending that callback. Other callback messages are unaffected by the failure of a single message.
+
+Callback results are valid for 24 hours. iMoneza will automatically delete responses older than 24 hours.
