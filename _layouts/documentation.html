@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://imoneza.github.io/css/main.css">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-3dkvEK0WLHRJ7/Csr0BZjAWxERc5WH7bdeUya2aXxdU= sha512-+L4yy6FRcDGbXJ9mPG8MT/3UCDzwR9gPeyFNMCtInsol++5m3bk2bXWKdZjvybmohrAsn3Ua5x8gfLnbE1YkOg==" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+    <div class="row" id="top-bar">
+      <div class="col-xs-12 text-right">
+        <a href="/">iMoneza Github Home</a> | <a href="http://imoneza.com">iMoneza.com</a>
+      </div>
+    </div>
+  </div>
+  <header class="container">
+    <a href="/"><img src="https://imoneza.github.io/images/imoneza-logo.png" alt="logo"></a>
+  </header>
+  <main class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-3 col-md-push-9">
+        <h3>Table of Contents</h3>
+        {% capture toc %}{% include toc.md %}{% endcapture %}
+        {{ toc | markdownify }}
+      </div>
+      <div class="col-xs-12 col-md-9 col-md-pull-3">
+        <h1><a href="{{ "/" | prepend:site.baseurl }}">iMoneza Documentation</a></h1>
+        {{ content }}
+      </div>
+    </div>
+  </main>
+  <footer class="container">
+    <div class="row">
+      <div class="col-xs-6">
+        &copy; 2016 iMoneza LLC
+      </div>
+      <div class="col-xs-6 text-right">
+        <a href="/">iMoneza Github Home</a> | <a href="http://imoneza.com">iMoneza.com</a>
+      </div>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
+</body>
+</html>

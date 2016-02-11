@@ -1,0 +1,7 @@
+# Site settings
+title: iMoneza Documentation
+baseurl: /documentation
+
+# Build settings
+markdown: kramdown
+exclude: ['README.md']
