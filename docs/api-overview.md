@@ -34,7 +34,7 @@ The token consists of four pieces of data combined together with newline charact
 * The URI of the document being requested. When generating the hashed token, this value should be in all lowercase. It does not include any query string/URL parameters (any part of the URL from the question mark on). An example would be “/api/Property/BB772A5B-1E7B-461C-8AC6-CA9E6E2FD2B9”.  
 * An ampersand-separated list of all the query string/URL parameter names and values. The parameters should be in alphabetical order by name, with an equal sign between the name and value. When generating the hashed token, both names and values should be lowercased and should not be URI encoded. An example of this would be “includepropertydata=true”.  
 
-The HTTP “Authenticate” header should contain the public key, followed by a colon, followed by the hashed base string. The client must also send a “Timestamp” header that includes the timestamp (in RFC 1123 format) used in the base string.
+The HTTP “Authentication” header should contain the public key, followed by a colon, followed by the hashed base string. The client must also send a “Timestamp” header that includes the timestamp (in RFC 1123 format) used in the base string.
 
 Here’s an example request showing how this token is constructed. A client is trying to request property data (via the Resource Management API) for a property with the access key of “BB772A5B-1E7B-461C-8AC6-CA9E6E2FD2B9”, so the client is requesting the URI “/api/Property/BB772A5B-1E7B-461C-8AC6-CA9E6E2FD2B9”. There are no additional parameters being passed. The base string consists of:   
 
