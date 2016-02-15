@@ -74,7 +74,7 @@ Returns access data about a resource based on its resource key (also called exte
 *	`accessKey`: a Resource Access API access key.  
 *	`resourceKey`: the external key for the resource being accessed.  
 *	`resourceURL`: a URL for the resource. If dynamic resource creation needs to occur, this URL will be spidered by iMoneza to gather resource data.  
-*	`userToken`: an existing user token that was stored as a cookie. This value can be empty if the user doesn’t have an existing user token cookie.  
+*	`userToken`: an existing user token that was stored as a cookie. This value can be empty if the user doesn’t have an existing user token cookie, but the parameter is required.
 *	`ipAddress`: the IP address of the user requesting a resource. This parameter is optional. The IP address can be IPv4 or IPv6.   
 
 The API returns a set of data like this:  
