@@ -27,7 +27,7 @@ All Resource Management API keys for a property have the same permissions for th
 
 Every API request must include an authentication token. Requests without a token or with an invalid token return a 401 error.
 
-The token consists of four pieces of data combined together with newline characters to form the “base string”. The base string is then SHA-256 hashed using the secret key. The four pieces of data used to create the base string are:  
+The token consists of four pieces of data combined together with newline characters to form the “base string”. The base string is then SHA-256 hashed using the secret key in binary format.  Finally, base64 encode the hash. The four pieces of data used to create the base string are:  
 
 * The HTTP method. This should be “GET” or “PUT”, and must be in all caps.  
 * The timestamp. The timestamp should be based on UTC time and formatted following the specifications of RFC 1123. An example of this format would be “Thu, 10 Apr 2008 13:30:00 GMT”.  
