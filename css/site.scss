@@ -1,0 +1,23 @@
+---
+---
+@charset "utf-8";
+
+/** variables **/
+$base-font-size:   16px;
+$spacing-unit:     30px;
+$grey-color:       #828282;
+$grey-color-light: lighten($grey-color, 40%);
+$grey-color-dark:  darken($grey-color, 25%);
+
+/**
+ * Set `margin-bottom` to maintain vertical rhythm
+ */
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+ul, ol, dl, figure,
+%vertical-rhythm {
+  margin-bottom: $spacing-unit / 2;
+}
+
+@import 'swagger';
+@import 'syntax-highlighting';
