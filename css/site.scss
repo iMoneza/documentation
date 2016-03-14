@@ -39,3 +39,17 @@ main {
 main h2, #toc h3 {
   margin-top: 0;
 }
+
+table {
+  border: 1px solid #cccccc;
+  border-collapse: collapse;
+  margin: 1rem 0 2rem 0;
+  th {
+    background-color: #cccccc;
+  }
+  th, td {
+    padding: 1rem;
+    border: 1px solid #cccccc;
+    width: 33%;
+  }
+}

@@ -8,7 +8,7 @@ Dynamic resource creation can occur automatically without any additional data be
 
 ### HTML Tags
 
-By default, iMoneza will use the HTML `title` tag and `meta name="description"` tags to populate the resource metadata. The following HTML code, for instance, would result in a resource with a title of “Test Resource” and a description of “This is a test resource.” Additionally, because the publication date and URL fields would be set based on the URL that was indexed and the time when the indexing occurred:
+By default, iMoneza will use the HTML `title` tag and `meta name="description"` tags to populate the resource metadata. The following HTML code, for instance, would result in a resource with a title of "Test Resource" and a description of "This is a test resource." Additionally, because the publication date and URL fields would be set based on the URL that was indexed and the time when the indexing occurred:
 
     <html>
         <head>
@@ -44,7 +44,7 @@ The XML block is included within an HTML script tag with a type of application/i
     * Tier
     * Price
     
-All elements are optional. Any referenced pricing groups must already exist. If the `PricingModel` is “Inherit”, other pricing tags will be ignored. 
+All elements are optional. Any referenced pricing groups must already exist. If the `PricingModel` is "Inherit", other pricing tags will be ignored. 
 
 If there is bad data in a tag or a `PricingModel` or `PricingGroup` does not align with what is in the system, the resource will be made available and will not be managed by iMoneza. It is up to the merchant to provide correct information in the tags so the resources can be created and tracked by iMoneza.
 
