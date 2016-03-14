@@ -1,5 +1,5 @@
 ---
-layout: documentation
+layout: default
 title: Introduction | iMoneza Documentation
 ---
 ## Introduction

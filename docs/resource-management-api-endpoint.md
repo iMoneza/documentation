@@ -1,5 +1,5 @@
 ---
-layout: documentation
+layout: default
 title: Resource Management API | iMoneza Documentation
 ---
 ## Resource Management API

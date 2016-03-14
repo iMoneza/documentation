@@ -1,5 +1,5 @@
 ---
-layout: documentation
+layout: default
 title: Dynamic Resource Creation | iMoneza Documentation
 ---
 ## Dynamic Resource Creation

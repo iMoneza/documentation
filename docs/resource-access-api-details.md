@@ -1,5 +1,5 @@
 ---
-layout: documentation
+layout: default
 title: Resource Access API | iMoneza Documentation
 ---
 ## Resource Access API

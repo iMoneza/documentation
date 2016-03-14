@@ -21,3 +21,21 @@ ul, ol, dl, figure,
 
 @import 'swagger';
 @import 'syntax-highlighting';
+
+header {
+  border-bottom: 1px solid #e7e7e7;
+  font-size: 3rem;
+  img {
+    height: 35px;
+    vertical-align: text-top;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+}
+main {
+  padding-top: 2rem;
+}
+#toc h3 {
+  margin-top: 0;
+}
