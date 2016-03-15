@@ -1,5 +1,4 @@
 ---
-layout: default
 title: API Overview | iMoneza Documentation
 ---
 ## API OVERVIEW

@@ -1,5 +1,4 @@
 ---
-layout: default
 title: Resource Management API | iMoneza Documentation
 ---
 

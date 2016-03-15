@@ -14,10 +14,13 @@
     }
 }
 
-.swagger-path {
+.swagger-path, .swagger-url {
     font-size: $base-font-size * 1.2;
     margin: 25px 0 10px 0;
     font-family: Courier New,Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono, monospace;
+}
+.swagger-url {
+    font-weight: bold;
 }
 
 .swagger-method {
