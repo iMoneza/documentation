@@ -287,3 +287,153 @@ paths:
       responses:
         200:
           description: Successful creation or updating of the item.
+  /api/Property/{apiKey}/ExternalSubscriber/{subscriberKey}:
+    put:
+      summary: Adds or updates a single external subscriber.
+      parameters:
+        - name: apiKey
+          in: path
+          description: The api key for this request.
+          required: true
+        - name: subscriberKey
+          in: path
+          description: The subscriber key
+          required: true
+        - name: SubscriberKey
+          in: formData
+          description: The subscriber key
+          required: true
+        - name: MaximumLinkedUsers
+          in: formData
+          description: Maximum Linked Users
+          required: false
+        - name: ValidationFields
+          in: formData
+          description: Array of objects with two properties - `Name` relates to the name of the field data and `Value` relates to the value of said data.
+          required: false
+        - name: EligibleSubscriptions
+          in: formData
+          description: An array of objects with two properties - `SubscriptionGroupKey` is the subscription group key and `EligibilityEndDate` is when eligibility to this subscription ends.
+          required: false
+        - name: AutomaticSubscriptions
+          in: formData
+          description: An array of objects with two properties - `SubscriptionGroupKey` is the subscription group key and `ExpirationDate` is the end of the subscription.
+          required: false
+      responses:
+        200:
+          description: A subscriber element containing only the demographic fields
+          examples:
+            application/json: >
+              {
+                "SubscriberKey": "ABC-123",
+                "MaximumLinkedUsers": 5,
+                "ValidationFields": [
+                  {
+                    "Name": "PrintSubscriptionNumber",
+                    "Value": "12345678"
+                  },
+                  {
+                    "Name": "ZipCode",
+                    "Value": "53211"
+                  }
+                ],
+                "EligibleSubscriptions": [
+                  {
+                    "SubscriptionGroupKey": "Digital-All-Access",
+                    "EligibilityEndDate": "2015-11-16T13:30:00Z"
+                  }
+                ],
+                "AutomaticSubscriptions": [
+                  {
+                    "SubscriptionGroupKey": "Digital-Basic",
+                    "ExpirationDate": "2015-11-09T19:00:00Z"
+                  }
+                ]
+              }
+  /api/Property/{apiKey}/ExternalSubscriber/{subscriberKey}/LinkedUser:
+    get:
+      summary: Retrieves a single external subscriber and linked iMoneza users.
+      parameters:
+        - name: apiKey
+          in: path
+          description: The Property ID for this request.
+          required: true
+        - name: subscriberKey
+          in: path
+          description: The subscriber key
+          required: true
+      responses:
+        200:
+          description: A subscriber element
+          examples:
+            application/json: >
+              {
+                "SubscriberKey": "ABC-123",
+                "Users": [
+                  {
+                    "ApplicationUserID": "43f4c9e1-00fe-4520-8311-929c5351a637",
+                    "DemographicFields": [
+                      {
+                        "Name": "EmailAddress",
+                        "Value": "john.doe@fake.com"
+                      },
+                      {
+                        "Name": "PhoneNumber",
+                        "Value": "555-555-5555"
+                      }
+                    ],
+                    "Subscriptions": [
+                      {
+                        "SubscriptionKey": "Digital-All-Access",
+                        "ExpirationDate": "2016-01-09T16:27:11.77"
+                      }
+                    ]
+                  }
+                ]
+              }
+  /api/Property/{apiKey}/ExternalSubscriberImport:
+    post:
+      summary: Add or update multiple external subscribers.
+      parameters:
+        - name: apiKey
+          in: path
+          description: The Property ID for this request.
+          required: true
+        - name: data
+          in: formData
+          description: Contains a property called `Subscribers` which is an array of `Subcriber` elements.
+          required: true
+      responses:
+        200:
+          description: A queue element
+          examples:
+            application/json: >
+              {
+                "ID": "e63f94b4-247f-405d-9222-af01507271ec|0635781205603107443",
+                "NotificationEmailAddress": null,
+                "Status": "Queued"
+              }
+  /api/Property/{apiKey}/ExternalSubscriberExport:
+    post:
+      summary: Begins an external subscriber export.
+      parameters:
+        - name: apiKey
+          in: path
+          description: The Property ID for this request.
+          required: true
+        - name: StartDate
+          in: formData
+          description: The timestamp of the beginning of the list
+          required: true
+        - name: EndDate
+          in: formData
+          description: The timestamp of the end of the list
+          required: true
+      responses:
+        200:
+          description: A queue element
+          examples:
+            application/json: >
+              {
+                "ID": "8CFDC883-88A5-43C2-ADC5-E80CB4BA7D16"
+              }

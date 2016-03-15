@@ -105,6 +105,15 @@ When iMoneza calls the merchant-hosted callback URL, it includes a callback type
 included in the request. The merchant then calls an endpoint on the iMoneza API that accepts an event type and token as 
 a parameter. iMoneza then returns data specific to the callback event.
 
+The callback types issued by iMoneza are:
+
+| Type | Meaning | Extra |
+| ---- | ------- | ----- |
+| ExternalSubscriberLinked | This is issued when an external subscriber is linked to an iMoneza user. | |
+| EligibleSubscriptionPurchased | This is issued when an iMoneza user purchases a subscription from the merchant online. | |
+| ExternalSubscriberImportCompleted | Called when a subscriber import has finished. | `ExternalSubscriberImportID` parameter is also sent indicating which batch or queue has completed. |
+| ExternalSubscriberExportCompleted | Called when a subscriber export batch has finished. | `ExternalSubscriberExportID` parameter is also sent indicating whichbatch has completed. |
+
 An example execution flow looks like:
 
 1. Merchant requests an external subscriber import

@@ -40,6 +40,10 @@
     &:hover {
         text-decoration: none;
     }
+    p {
+        display: inline-block;
+        margin: 0;
+    }
 }
 
 .swagger-method-name {

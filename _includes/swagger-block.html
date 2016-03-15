@@ -7,7 +7,7 @@
         <h3 class="swagger-method-title">
             <span class="swagger-method-link">
                 <span class="swagger-method-name">{{ method[0] | upcase }}</span>
-                {{ method[1].summary }}
+                {{ method[1].summary | markdownify }}
             </span>
         </h3>
         <div class="swagger-method-details collapse">
@@ -33,7 +33,7 @@
                             {% endif %}
                         </td>
                         <td>{{ parameter.in }}</td>
-                        <td>{{ parameter.description }}</td>
+                        <td>{{ parameter.description | markdownify }}</td>
                         <td>
                             {% if parameter.type %}
                             {{ parameter.type | capitalize }}
