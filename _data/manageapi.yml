@@ -95,3 +95,195 @@ paths:
                 		}
                 	  ]
                 	}
+  /api/Property/{propertyID}/Resource:
+    get:
+      summary: Returns all the resources belonging to a property.
+      parameters:
+        - name: propertyID
+          in: path
+          description: The Property ID for this request.
+          required: true
+      responses:
+        200:
+          description: An array of resource objects
+          examples:
+            application/json: >
+              [
+                  {
+                    "Name": "Third Post",
+                    "ExternalKey": "13",
+                    "Active": true,
+                    "URL": "http://localhost:64653/?p=13",
+                    "Title": "Third Post",
+                    "Byline": "",
+                    "Description": "",
+                    "PublicationDate": "2014-07-07T16:08:30",
+                    "PricingGroup": {
+                      "PricingGroupID": "a0dbe1be-eef9-4f2e-a10f-5a4c35ac2caa",
+                      "Name": "Pay What You Want",
+                      "IsDefault": false,
+                      "PricingModel": "VariablePrice",
+                      "Price": 0.00,
+                      "ExpirationPeriodUnit": "Never",
+                      "ExpirationPeriodValue": 0
+                    },
+                    "PricingModel": "Inherit",
+                    "Price": 0.00,
+                    "ExpirationPeriodUnit": "Never",
+                    "ExpirationPeriodValue": 0,
+                    "TargetConversionRate": 0.00,
+                    "TargetConversionPriceFloor": 0.00,
+                    "TargetConversionHitsPerRecalculationPeriod": 0,
+                    "Property": null
+                  },
+                  {
+                    "Name": "Hello, world.",
+                    "ExternalKey": "1",
+                    "Active": true,
+                    "URL": "http://localhost:64653/?p=1",
+                    "Title": "Hello, world.",
+                    "Byline": "by Chris Wilson",
+                    "Description": "",
+                    "PublicationDate": "2014-06-13T09:35:07",
+                    "PricingGroup": {
+                      "PricingGroupID": "d0cb0c67-743f-41e7-bd90-dc3991743f90",
+                      "Name": "Default",
+                      "IsDefault": true,
+                      "PricingModel": "FixedPrice",
+                      "Price": 0.50,
+                      "ExpirationPeriodUnit": "Never",
+                      "ExpirationPeriodValue": 0
+                    },
+                    "PricingModel": "Inherit",
+                    "Price": 0.00,
+                    "ExpirationPeriodUnit": "Never",
+                    "ExpirationPeriodValue": 0,
+                    "TargetConversionRate": 0.00,
+                    "TargetConversionPriceFloor": 0.00,
+                    "TargetConversionHitsPerRecalculationPeriod": 0,
+                    "Property": null
+                  }
+              ]
+  /api/Property/{propertyID}/Resource/{externalKey}:
+    get:
+      summary: Returns all the resources belonging to a property.
+      parameters:
+        - name: propertyID
+          in: path
+          description: The Property ID for this request.
+          required: true
+        - name: externalKey
+          in: path
+          description: The external key or public identifier of a resource.
+          required: true
+        - name: includePropertyData
+          in: query
+          description: If set to true, the settings for the property will also be returned.
+          required: false
+      responses:
+        200:
+          description: A resource object (with includePropertyData false)
+          examples:
+            application/json: >
+              {
+                  "Name": "Hello, world.",
+                  "ExternalKey": "1",
+                  "Active": true,
+                  "URL": "http://localhost:64653/?p=1",
+                  "Title": "Hello, world.",
+                  "Byline": "by Chris Wilson",
+                  "Description": "",
+                  "PublicationDate": "2014-06-13T09:35:07",
+                  "PricingGroup": {
+                    "PricingGroupID": "d0cb0c67-743f-41e7-bd90-dc3991743f90",
+                    "Name": "Default",
+                    "IsDefault": true,
+                    "PricingModel": "FixedPrice",
+                    "Price": 0.50,
+                    "ExpirationPeriodUnit": "Never",
+                    "ExpirationPeriodValue": 0
+                  },
+                  "PricingModel": "Inherit",
+                  "Price": 0.00,
+                  "ExpirationPeriodUnit": "Never",
+                  "ExpirationPeriodValue": 0,
+                  "TargetConversionRate": 0.00,
+                  "TargetConversionPriceFloor": 0.00,
+                  "TargetConversionHitsPerRecalculationPeriod": 0,
+                  "Property": null
+              }
+  /api/Property/{propertyID}/Resource/{externalKey}:
+    put:
+      summary: Creates/Updates a resource, identified by an external key.
+      parameters:
+        - name: propertyID
+          in: path
+          description: The Property ID for this request.
+          required: true
+        - name: externalKey
+          in: path
+          description: The external key or public identifier of a resource.
+          required: true
+        - name: Name
+          in: formData
+          description: The internal name of the resource
+          required: false
+        - name: Active
+          in: formData
+          description: Boolean of whether this item is active
+          required: false
+        - name: URL
+          in: formData
+          description: The URL of the resource
+          required: false
+        - name: Title
+          in: formData
+          description: The title of the resource
+          required: false
+        - name: Byline
+          in: formData
+          description: Who authored the resource
+          required: false
+        - name: Description
+          in: formData
+          description: Description of the resource
+          required: false
+        - name: PublicationDate
+          in: formData
+          description: The publication date of the resource
+          required: false
+        - name: PricingGroup
+          in: formData
+          description: Update or set the pricing group for the resource (see special notes below)
+          required: false
+        - name: PricingModel
+          in: formData
+          description: The resource pricing model
+          required: false
+        - name: Price
+          in: formData
+          description: The price of the resource
+          required: false
+        - name: ExperiationPeriodUnit
+          in: formData
+          description: Expiration Period Unit
+          required: false
+        - name: ExpirationPeriodValue
+          in: formData
+          description: Expiration Period Value
+          required: false
+        - name: TargetConversionRate
+          in: formData
+          description: Target Conversion Rate
+          required: false
+        - name: TargetConversionPriceFloor
+          in: formData
+          description: Target Conversion Price Floor
+          required: false
+        - name: TargetConversionHitsPerRecalculationPeriod
+          in: formData
+          description: Target Conversion Hits Per Recalculation Period
+          required: false
+      responses:
+        200:
+          description: Successful creation or updating of the item.
