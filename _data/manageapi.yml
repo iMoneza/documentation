@@ -437,3 +437,146 @@ paths:
               {
                 "ID": "8CFDC883-88A5-43C2-ADC5-E80CB4BA7D16"
               }
+  /api/Property/{apiKey}/CallbackResult/{ExternalSubscriberLinkedCallbackToken}:
+    get:
+      summary: Retrieve data about an iMoneza user after an external subscriber is linked
+      parameters:
+        - name: apiKey
+          in: path
+          description: The Property ID for this request.
+          required: true
+        - name: ExternalSubscriberLinkedCallbackToken
+          in: path
+          description: This is the token retrieved from the callback of type `ExternalSubscriberLinked`
+          required: true
+      responses:
+        200:
+          description: A data element with a subscriber element child (the `Subscriptions` element will always be empty)
+          examples:
+            application/json: >
+              {
+                "SubscriberKey": "ABC-123",
+                "Users": [
+                  {
+                    "ApplicationUserID": "43f4c9e1-00fe-4520-8311-929c5351a637",
+                    "DemographicFields": [
+                      {
+                        "Name": "EmailAddress",
+                        "Value": "john.doe@fake.com"
+                      },
+                      {
+                        "Name": "PhoneNumber",
+                        "Value": "555-555-5555"
+                      }
+                    ],
+                    "Subscriptions": []
+                  }
+                ]
+              }
+  /api/Property/{apiKey}/CallbackResult/{EligibleSubscriptionPurchasedCallbackToken}:
+    get:
+      summary: Retrieve data about a subscription purchase
+      parameters:
+        - name: apiKey
+          in: path
+          description: The Property ID for this request.
+          required: true
+        - name: EligibleSubscriptionPurchasedCallbackToken
+          in: path
+          description: This is the token retrieved from the callback of type `EligibleSubscriptionPurchased`
+          required: true
+      responses:
+        200:
+          description: A data element with a subscriber element child
+          examples:
+            application/json: >
+              {
+                "SubscriberKey": "ABC-123",
+                "Users": [
+                  {
+                    "ApplicationUserID": "43f4c9e1-00fe-4520-8311-929c5351a637",
+                    "DemographicFields": [
+                      {
+                        "Name": "EmailAddress",
+                        "Value": "chris.wilson@northwoodsoft.com"
+                      },
+                      {
+                        "Name": "PhoneNumber",
+                        "Value": ""
+                      }
+                    ],
+                    "Subscriptions": [
+                      {
+                        "SubscriptionKey": "Digital-All-Access",
+                        "ExpirationDate": "2016-01-09T16:27:11.7713801Z"
+                      }
+                    ]
+                  }
+                ]
+              }
+  /api/Property/{apiKey}/CallbackResult/{ExternalSubscriberImportCompletedCallbackToken}:
+    get:
+      summary: Retrieve information about the external subscriber import, including any errors that occurred while processing.
+      parameters:
+        - name: apiKey
+          in: path
+          description: The Property ID for this request.
+          required: true
+        - name: ExternalSubscriberImportCompletedCallbackToken
+          in: path
+          description: This is the token retrieved from the callback of type `ExternalSubscriberImportCompleted`
+          required: true
+      responses:
+        200:
+          description: A status object
+          examples:
+            application/json: >
+              {
+                "Status": "Completed successfully",
+                "Errors": [],
+                "SuccessCount": 2,
+                "FailureCount": 0
+              }
+  /api/Property/{apiKey}/CallbackResult/{ExternalSubscriberExportCompletedCallbackToken}:
+    get:
+      summary: Retrieve the external subscriber export.
+      parameters:
+        - name: apiKey
+          in: path
+          description: The Property ID for this request.
+          required: true
+        - name: ExternalSubscriberExportCompletedCallbackToken
+          in: path
+          description: This is the token retrieved from the callback of type `ExternalSubscriberExportCompleted`
+          required: true
+      responses:
+        200:
+          description: An array of external subscribers
+          examples:
+            application/json: >
+              [
+                {
+                  "SubscriberKey": "ABC-123",
+                  "Users": [
+                    {
+                      "ApplicationUserID": "43f4c9e1-00fe-4520-8311-929c5351a637",
+                      "DemographicFields": [
+                        {
+                          "Name": "EmailAddress",
+                          "Value": "john.doe@fake.com"
+                        },
+                        {
+                          "Name": "PhoneNumber",
+                          "Value": "555-555-5555"
+                        }
+                      ],
+                      "Subscriptions": [
+                        {
+                          "SubscriptionKey": "Digital-All-Access",
+                          "ExpirationDate": "2016-01-09T16:27:11.77"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
