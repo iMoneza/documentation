@@ -517,7 +517,7 @@ paths:
               }
   /api/Property/{apiKey}/CallbackResult/{ExternalSubscriberImportCompletedCallbackToken}:
     get:
-      summary: Retrieve information about the external subscriber import, including any errors that occurred while processing.
+      summary: Retrieve information about the external subscriber import including any errors that occurred.
       parameters:
         - name: apiKey
           in: path
