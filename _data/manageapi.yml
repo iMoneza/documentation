@@ -101,7 +101,8 @@ paths:
         403:
           description: Not Authorized
         404:
-          description: Item Not found  /api/Property/{propertyID}/Resource:
+          description: Item Not found
+  /api/Property/{propertyID}/Resource:
     get:
       summary: Returns all the resources belonging to a property.
       parameters:
