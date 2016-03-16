@@ -14,7 +14,7 @@ configuration options and an `init()` call in a script block afterward.
 
 For example.
 
-```HTML
+```html
 <head>
   <title>Our Website</title>
   <script src='https://accessui.imoneza.com/assets/imoneza.js'></script>
