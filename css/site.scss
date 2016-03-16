@@ -53,3 +53,7 @@ table {
     width: 33%;
   }
 }
+pre {
+  word-break: normal;
+  overflow-x: auto;
+}
