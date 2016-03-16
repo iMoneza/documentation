@@ -96,7 +96,12 @@ paths:
                 		}
                 	  ]
                 	}
-  /api/Property/{propertyID}/Resource:
+        401:
+          description: Authentication Failure
+        403:
+          description: Not Authorized
+        404:
+          description: Item Not found  /api/Property/{propertyID}/Resource:
     get:
       summary: Returns all the resources belonging to a property.
       parameters:
@@ -165,6 +170,12 @@ paths:
                     "Property": null
                   }
               ]
+        401:
+          description: Authentication Failure
+        403:
+          description: Not Authorized
+        404:
+          description: Item Not found
   /api/Property/{propertyID}/Resource/{externalKey}:
     get:
       summary: Returns all the resources belonging to a property.
@@ -213,6 +224,12 @@ paths:
                   "TargetConversionHitsPerRecalculationPeriod": 0,
                   "Property": null
               }
+        401:
+          description: Authentication Failure
+        403:
+          description: Not Authorized
+        404:
+          description: Item Not found
   /api/Property/{propertyID}/Resource/{externalKey}:
     put:
       summary: Creates/Updates a resource, identified by an external key.
@@ -288,6 +305,12 @@ paths:
       responses:
         200:
           description: Successful creation or updating of the item.
+        401:
+          description: Authentication Failure
+        403:
+          description: Not Authorized
+        404:
+          description: Item Not found
   /api/Property/{apiKey}/ExternalSubscriber/{subscriberKey}:
     put:
       summary: Adds or updates a single external subscriber.
@@ -351,6 +374,12 @@ paths:
                   }
                 ]
               }
+        401:
+          description: Authentication Failure
+        403:
+          description: Not Authorized
+        404:
+          description: Item Not found
   /api/Property/{apiKey}/ExternalSubscriber/{subscriberKey}/LinkedUser:
     get:
       summary: Retrieves a single external subscriber and linked iMoneza users.
@@ -392,6 +421,12 @@ paths:
                   }
                 ]
               }
+        401:
+          description: Authentication Failure
+        403:
+          description: Not Authorized
+        404:
+          description: Item Not found
   /api/Property/{apiKey}/ExternalSubscriberImport:
     post:
       summary: Add or update multiple external subscribers.
@@ -414,6 +449,12 @@ paths:
                 "NotificationEmailAddress": null,
                 "Status": "Queued"
               }
+        401:
+          description: Authentication Failure
+        403:
+          description: Not Authorized
+        404:
+          description: Item Not found
   /api/Property/{apiKey}/ExternalSubscriberExport:
     post:
       summary: Begins an external subscriber export.
@@ -438,6 +479,12 @@ paths:
               {
                 "ID": "8CFDC883-88A5-43C2-ADC5-E80CB4BA7D16"
               }
+        401:
+          description: Authentication Failure
+        403:
+          description: Not Authorized
+        404:
+          description: Item Not found
   /api/Property/{apiKey}/CallbackResult/{ExternalSubscriberLinkedCallbackToken}:
     get:
       summary: Retrieve data about an iMoneza user after an external subscriber is linked
@@ -474,6 +521,12 @@ paths:
                   }
                 ]
               }
+        401:
+          description: Authentication Failure
+        403:
+          description: Not Authorized
+        404:
+          description: Item Not found
   /api/Property/{apiKey}/CallbackResult/{EligibleSubscriptionPurchasedCallbackToken}:
     get:
       summary: Retrieve data about a subscription purchase
@@ -515,6 +568,12 @@ paths:
                   }
                 ]
               }
+        401:
+          description: Authentication Failure
+        403:
+          description: Not Authorized
+        404:
+          description: Item Not found
   /api/Property/{apiKey}/CallbackResult/{ExternalSubscriberImportCompletedCallbackToken}:
     get:
       summary: Retrieve information about the external subscriber import including any errors that occurred.
@@ -538,6 +597,12 @@ paths:
                 "SuccessCount": 2,
                 "FailureCount": 0
               }
+        401:
+          description: Authentication Failure
+        403:
+          description: Not Authorized
+        404:
+          description: Item Not found
   /api/Property/{apiKey}/CallbackResult/{ExternalSubscriberExportCompletedCallbackToken}:
     get:
       summary: Retrieve the external subscriber export.
@@ -581,3 +646,9 @@ paths:
                   ]
                 }
               ]
+        401:
+          description: Authentication Failure
+        403:
+          description: Not Authorized
+        404:
+          description: Item Not found
