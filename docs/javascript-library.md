@@ -26,6 +26,9 @@ For example.
 </head>
 ```
 
+**Please note:** Do not forget to add your domain to the Allowed Origins setting in your Resource Access API Key definition.  
+If you do not do this, you will get a cross-domain javascript error and the script will not work.
+
 ### Init Method Options
 
 The iMoneza library has one public method available: `iMoneza.ResourceAccess.init()` which receives an options object
