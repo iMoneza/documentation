@@ -37,7 +37,7 @@ should be implemented by iMoneza consumers that enforce access control.
   * Otherwise, a `GET` request to the endpoint `/api/Resource/{apiKey}/resourceKey?UserToken={userToken}&ResourceURL={url}` is performed.  The `userToken `is optional. This should be sent if it exists (having been previously set with a cookie).  
 3.	The CMS plugin processes the resource access data.  
   * The returned data will include a `UserToken`. The CMS plugin should store this as a cookie.  
-  * If the returned data includes a non-empty `AccessActionURL`, the CMS plugin should redirect the user to that URL.  
+  * If the returned data includes a non-empty `AccessActionURL`, the CMS plugin should redirect the user to that URL.  In order for iMoneza to redirect back to the resource (or any other page), add a `get` parameter of `originalURL` that points to the destination after purchase. 
   * If the returned data does not include a non-empty `AccessActionURL`, the CMS plugin should serve the resource to the user.  
 
 Note that anytime a user token is returned, regardless of which API endpoint created it, the CMS plugin should store it. 
