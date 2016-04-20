@@ -478,7 +478,11 @@ paths:
           examples:
             application/json: >
               {
-                "ID": "8CFDC883-88A5-43C2-ADC5-E80CB4BA7D16"
+                "ID": "8CFDC883-88A5-43C2-ADC5-E80CB4BA7D16",
+                "NotificationEmailAddress": null,
+                "Status": "Queued",
+                "StartDate": "2016-04-20T05:00:00+00:00",
+                "EndDate": "2016-04-21T04:59:59+00:00"
               }
         401:
           description: Authentication Failure
