@@ -112,7 +112,8 @@ The callback types issued by iMoneza are:
 | ExternalSubscriberLinked | This is issued when an external subscriber is linked to an iMoneza user. | |
 | EligibleSubscriptionPurchased | This is issued when an iMoneza user purchases a subscription from the merchant online. | |
 | ExternalSubscriberImportCompleted | Called when a subscriber import has finished. | `ExternalSubscriberImportID` parameter is also sent indicating which batch or queue has completed. |
-| ExternalSubscriberExportCompleted | Called when a subscriber export batch has finished. | `ExternalSubscriberExportID` parameter is also sent indicating whichbatch has completed. |
+| ExternalSubscriberExportCompleted | Called when a subscriber export batch has finished. | `ExternalSubscriberExportID` parameter is also sent indicating which batch has completed. |
+| ExternalFulfillmentSubscriptionExport | Called when an external subscription export batch has finished. | `ExternalFulfillmentSubscriptionExportID` parameter indicates with queue item was completed. |
 
 An example execution flow looks like:
 

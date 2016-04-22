@@ -19,7 +19,6 @@
                         <th>Name</th>
                         <th>Located in</th>
                         <th>Description</th>
-                        <th>Type</th>
                     </tr>
                     {% for parameter in method[1].parameters %}
                     <tr>
@@ -34,16 +33,6 @@
                         </td>
                         <td>{{ parameter.in }}</td>
                         <td>{{ parameter.description | markdownify }}</td>
-                        <td>
-                            {% if parameter.type %}
-                            {{ parameter.type | capitalize }}
-                            {% if parameter.items %}
-                            of {{ parameter.items.type | capitalize }}
-                            {% endif %}
-                            {% else %}
-                            String
-                            {% endif %}
-                        </td>
                     </tr>
                     {% endfor %}
                 </table>

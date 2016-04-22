@@ -490,6 +490,45 @@ paths:
           description: Not Authorized
         404:
           description: Item Not found
+  /api/Property/{apiKey}/ExternalFulfillmentSubscriptionExport:
+    post:
+      summary: Begins an external fulfillment export of subscribers eligible at the date given.
+      parameters:
+        - name: apiKey
+          in: path
+          description: The Property ID for this request.
+          required: true
+        - name: SubscriptionGroupID
+          in: formData
+          description: The subscription group ID that needs to be fulfilled
+          required: true
+        - name: AsOfDate
+          in: formData
+          description: The timestamp indicating the point in time to retrieve active subscriptions from.
+          required: true
+        - name: NotificationEmailAddress
+          in: formData
+          description: An optional email address that will be notified when this finishes.
+          required: false
+      responses:
+        200:
+          description: A queue element
+          examples:
+            application/json: >
+              {
+                "ID": "cd49cd82-f256-46d2-bd9e-79a57d30dc9a|0635968527481530084",
+                "NotificationEmailAddress": "email@address.com",
+                "Status": "Queued",
+                "SubscriptionGroupID": "14b00cc8-40a0-431e-94f1-27ffc4baf843",
+                "AsOfDate": "2015-12-09T21:03:55Z",
+                "Data": null
+              }
+        401:
+          description: Authentication Failure
+        403:
+          description: Not Authorized
+        404:
+          description: Item Not found
   /api/Property/{apiKey}/CallbackResult/{ExternalSubscriberLinkedCallbackToken}:
     get:
       summary: Retrieve data about an iMoneza user after an external subscriber is linked
@@ -651,6 +690,105 @@ paths:
                   ]
                 }
               ]
+        401:
+          description: Authentication Failure
+        403:
+          description: Not Authorized
+        404:
+          description: Item Not found
+  /api/Property/{apiKey}/CallbackResult/{ExternalFulfillmentSubscriptionExportCallbackToken}:
+    get:
+      summary: Retrieve the external fulfillment subscription export.
+      parameters:
+        - name: apiKey
+          in: path
+          description: The Property ID for this request.
+          required: true
+        - name: ExternalFulfillmentSubscriptionExportCallbackToken
+          in: path
+          description: This is the token retrieved from the callback of type `ExternalFulfillmentSubscriptionExport`
+          required: true
+      responses:
+        200:
+          description: An array of external fulfillment subscriptions
+        401:
+          description: Authentication Failure
+        403:
+          description: Not Authorized
+        404:
+          description: Item Not found
+  /api/Property/{apiKey}/CallbackResult/{ExternalFulfillmentSubscriptionPurchasedCallbackToken}:
+    get:
+      summary: Retrieve the external fulfillment information after a user has purchased one.
+      parameters:
+        - name: apiKey
+          in: path
+          description: The Property ID for this request.
+          required: true
+        - name: ExternalFulfillmentSubscriptionPurchasedCallbackToken
+          in: path
+          description: This is the token retrieved from the callback of type `ExternalFulfillmentSubscriptionPurchased`
+          required: true
+      responses:
+        200:
+          description: An object indicating the subscription data and demographic fields that the merchant has defined.
+          examples:
+            application/json: >
+              {
+                "SubscriptionID": "e445853c-bb3f-45df-8024-b46d8bf1d033",
+                "ApplicationUserID": "1ad322c4-c9c3-4865-bd56-96f27f9a3002",
+                "Subscription": {
+                  "SubscriptionKey": "print-daily",
+                  "ExpirationDate": "2016-01-07T20:44:00.3100111Z",
+                  "DemographicFields": null
+                },
+                "DemographicFields": [
+                  {
+                    "Name": "Address_Line1",
+                    "Value": "123 Main St."
+                  },
+                  {
+                    "Name": "Address_Line2",
+                    "Value": ""
+                  },
+                  {
+                    "Name": "Address_City",
+                    "Value": "Milwaukee"
+                  },
+                  {
+                    "Name": "Address_State",
+                    "Value": "AL"
+                  },
+                  {
+                    "Name": "Address_PostalCode",
+                    "Value": "53211"
+                  },
+                  {
+                    "Name": "Address_Country",
+                    "Value": "US"
+                  },
+                  {
+                    "Name": "Address",
+                    "Value": "Home"
+                  },
+                  {
+                    "Name": "EmailAddress",
+                    "Value": "405@fake.com"
+                  },
+                  {
+                    "Name": "PhoneNumber",
+                    "Value": "555-555-5555"
+                  },
+                  {
+                    "Name": "EmailPreference",
+                    "Value": "SharePublic"
+                  },
+                  {
+                    "Name": "Agree",
+                    "Value": "true"
+                  }
+                ]
+              }
         401:
           description: Authentication Failure
         403:
