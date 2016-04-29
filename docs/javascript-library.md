@@ -233,9 +233,13 @@ _Additional documentation to add: getAccessMessage_
 
 _Example to add: custom getAccessMessage text_
 
-### `openModalForm` Method
+### `openModalFrame` Method
 
-### `closeModalForm` Method
+The `openModalFrame` method opens the modal frame with a URL you specify. It takes one parameter, the URL to open in the IFRAME inside the modal frame.
+
+### `closeModalFrame` Method
+
+The `closeModalFrame` method closes the modal frame that was previously opened with a call to `openModalFrame`. It takes no parameters.
 
 ### `logOut` Method
 
