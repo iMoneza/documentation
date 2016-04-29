@@ -146,7 +146,7 @@ _Additional example to add: setting resourceKey based on a URL parameter, like a
 _Additional example to add: setting the resourceKey and resourceURL based on the URL, but removing some parameters (like paging parameters)_
 
 **Example Using an `accessGranted` Callback**
-The `AccessGranted` function is called when access to a page is granted via client-side access control. A single object is passed to the callback function containing data about the access request, including current quota data (if applicable), subscription data, and single purchase data. Basic user data is also passed along, as is the reason why access is granted.
+The `accessGranted` function is called when access to a page is granted via client-side access control. A single object is passed to the callback function containing data about the access request, including current quota data (if applicable), subscription data, and single purchase data. Basic user data is also passed along, as is the reason why access is granted.
 
 This example displays whether or not the user is logged in. It then displays the reason why they have access to the page. If a quota is enforced, it displays how many quota hits the user has and how many they are allowed.
 
@@ -184,7 +184,7 @@ _Change example to use the getAccessReason function_
 _Additional example to add: loading page content via AJAX from accessGranted_
 
 **Example Using the `accessDenied` Callback**
-The `AccessDenied` function is called when access to a page is denied. The same object is passed to this function as to the `AccessGranted` function.
+The `accessDenied` function is called when access to a page is denied. The same object is passed to this function as to the `accessGranted` function.
 
 This example display the user's user name (if they're logged in) and tells them they do not have access to the page.
 
