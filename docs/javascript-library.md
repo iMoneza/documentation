@@ -189,7 +189,7 @@ The `AccessDenied` function is called when access to a page is denied. The same 
 This example display the user's user name (if they're logged in) and tells them they do not have access to the page.
 
 ```javascript
-iMoneza.ResourceAccess.paywall('744935CD-D8D9-E311-B48B-BC305BD0D54E', {
+iMoneza.paywall.init('744935CD-D8D9-E311-B48B-BC305BD0D54E', {
   accessDenied: function (resourceAccessData) {
     $('#iMonezaUsername').text(resourceAccessData.IsAnonymousUser ? 'Not logged in' : 'Logged in as ' + resourceAccessData.UserName);
     $('#iMonezaAccess').text('You do not have access to this page.');
@@ -199,7 +199,7 @@ iMoneza.ResourceAccess.paywall('744935CD-D8D9-E311-B48B-BC305BD0D54E', {
 
 _Additional example to add: displaying an ad or additional information from accessDenied_
 
-**Example Using the ModalOpenFrame and ModalCloseFrame Callbacks**  
+**Example Using the `modalFrame.open` and `modalFrame.close` Callbacks**  
 These callbacks allows merchants to customize the modal IFRAME rendered around the paywall. Both callbacks *must* be used together.
 
 ```javascript
@@ -226,6 +226,8 @@ iMoneza.paywall.init({'744935CD-D8D9-E311-B48B-BC305BD0D54E', {
     }
   });
 ```
+
+_Additional example to add: resizing the modal frame with modalFrame.updateHeight_
 
 _Additional documentation to add: getAccessMessage_
 
