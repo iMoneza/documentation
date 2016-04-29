@@ -13,23 +13,41 @@ paths:
         - name: accessKey
           in: path
           description: Your Resource Access API access key.
+          type: string
           required: true
         - name: resourceKey
           in: path
           description: The external key for the resource being accessed.
+          type: string
           required: true
         - name: ResourceURL
           in: query
           description: A URL for the resource. If dynamic resource creation needs to occur, this URL will be spidered by iMoneza to gather resource data.
+          type: string
           required: true
         - name: UserToken
           in: query
+          type: string
           description: An existing user token that was stored as a cookie. This value can be empty if the user doesn’t have an existing user token cookie, but the parameter is required.
           required: true
         - name: IP
           in: query
           description: The IP address of the user requesting a resource. This parameter is optional. The IP address can be IPv4 or IPv6.
+          type: string
           required: false
+        - name: AdBlockerStatus
+          in: query
+          description: The result of any ad blocker detection performed by the API consumer.
+          type: string
+          enum: ["Unknown", "DetectionNotPerformed", "AdBlockerNotDetected", "AdBlockerDetected"]
+          required: false
+          default: "Unknown"
+        - name: UseLegacyPaywall
+          in: query
+          description: Whether or not to use the legacy paywall.
+          required: false
+          default: false
+          type: boolean
       responses:
         200:
           description: A resource access object
@@ -41,7 +59,13 @@ paths:
                   "PaywallDisplayStyle": "RedirectMobile",
                   "ResourceName": "Front Page News",
                   "UserName": "johndoe",
+                  "FirstName": "John",
                   "IsAnonymousUser": false,
+                  "IsAdSupported": false,
+                  "AdSupportedMessageTitle": "",
+                  "AdSupportedMessage": "",
+                  "AdBlockerStatus": "Unknown",
+                  "IsNoCost": false,
                   "Quota": {
                 	"IsEnabled": false,
                 	"HitCount": -1,
