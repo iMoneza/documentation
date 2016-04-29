@@ -31,13 +31,11 @@ The `iMoneza.paywall.init` method initializes the iMoneza paywall. There are two
 The full list of custom configuration options that can be passed in looks like:
 ```javascript
 {
-	apiKeyID: '',
 	resourceKey: '',
 	resourceURL: '',
 	desktopPaywallType: '',
 	mobilePaywallType: '',
 	mobileMaxWidth: 0,
-	enforceOldBrowserRules: 0,
 	embeddedAdBlockerDetection: {
 		element: '',
 		zIndex: 0,
@@ -143,7 +141,9 @@ iMoneza.paywall.init('744935CD-D8D9-E311-B48B-BC305BD0D54E', {
 });
 ```
 
-_Additional example to add: setting the key based on a URL parameter_
+_Additional example to add: setting resourceKey based on a URL parameter, like a unique ID_
+
+_Additional example to add: setting the resourceKey and resourceURL based on the URL, but removing some parameters (like paging parameters)
 
 **Example Using an AccessGranted Callback**
 The `AccessGranted` function is called when access to a page is granted via client-side access control. A single object is passed to the callback function containing data about the access request, including current quota data (if applicable), subscription data, and single purchase data. Basic user data is also passed along, as is the reason why access is granted.
