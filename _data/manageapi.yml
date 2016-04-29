@@ -35,7 +35,9 @@ paths:
                 		 "Name": "Premium",
                 		 "Title": "Premium Subscription",
                 		 "Price": 10.00,
-                		 "Period": "Monthly"
+                		 "Period": "Monthly",
+                		 "PaywallDescription": "",
+                		 "PaywallShortDesciprtion": ""
                 		},
                 		{
                 		 "SubscriptionGroupID": "e3786c3e-f733-4777-a34f-d89fb48085e5",
@@ -43,6 +45,8 @@ paths:
                 		 "Title": "Subscription",
                 		 "Price": 5.00,
                 		 "Period": "Monthly"
+                		 "PaywallDescription": "",
+                		 "PaywallShortDesciprtion": ""
                 		}
                 	 ],
                 	 "PricingGroups": [
@@ -141,6 +145,8 @@ paths:
                     "TargetConversionRate": 0.00,
                     "TargetConversionPriceFloor": 0.00,
                     "TargetConversionHitsPerRecalculationPeriod": 0,
+                		"PaywallDescription": "",
+                		"PaywallShortDesciprtion": "",
                     "Property": null
                   },
                   {
@@ -168,6 +174,8 @@ paths:
                     "TargetConversionRate": 0.00,
                     "TargetConversionPriceFloor": 0.00,
                     "TargetConversionHitsPerRecalculationPeriod": 0,
+                		"PaywallDescription": "",
+                		"PaywallShortDesciprtion": "",
                     "Property": null
                   }
               ]
@@ -223,6 +231,8 @@ paths:
                   "TargetConversionRate": 0.00,
                   "TargetConversionPriceFloor": 0.00,
                   "TargetConversionHitsPerRecalculationPeriod": 0,
+              		"PaywallDescription": "",
+              		"PaywallShortDesciprtion": "",
                   "Property": null
               }
         401:
@@ -242,50 +252,68 @@ paths:
         - name: externalKey
           in: path
           description: The external key or public identifier of a resource.
+          type: "string"
+          maxLength: 50
           required: true
         - name: Name
           in: formData
           description: The internal name of the resource
+          type: "string"
+          maxLength: 50
           required: false
         - name: Active
           in: formData
           description: Boolean of whether this item is active
+          type: boolean
           required: false
         - name: URL
           in: formData
           description: The URL of the resource
+          type: "string"
+          maxLength: 1000
           required: false
         - name: Title
           in: formData
           description: The title of the resource
+          type: "string"
+          maxLength: 200
           required: false
         - name: Byline
           in: formData
           description: Who authored the resource
+          type: "string"
+          maxLength: 200
           required: false
         - name: Description
           in: formData
-          description: Description of the resource
+          description: Description of the resource that appears if the paywall type is set to "Modal"
+          type: "string"
+          maxLength: 2000
           required: false
         - name: PublicationDate
           in: formData
           description: The publication date of the resource
+          type: "string"
           required: false
         - name: PricingGroup
           in: formData
           description: Update or set the pricing group for the resource (see special notes below)
+          type: "string"
           required: false
         - name: PricingModel
           in: formData
           description: The resource pricing model
+          enum: ["Inherit", "Free", "AuthenticationRequired", "FixedPrice", "VariablePrice", "TimeTiered", "ViewTiered", "SubscriptionOnly", "TargetConversion"]
           required: false
         - name: Price
           in: formData
           description: The price of the resource
+          type: "number"
           required: false
         - name: ExperiationPeriodUnit
           in: formData
           description: Expiration Period Unit
+          enum: ["Never", "Years", "Months", "Weeks", "Days"]
           required: false
         - name: ExpirationPeriodValue
           in: formData
@@ -302,6 +330,17 @@ paths:
         - name: TargetConversionHitsPerRecalculationPeriod
           in: formData
           description: Target Conversion Hits Per Recalculation Period
+          required: false
+        - name: PaywallDescription
+          in: formData
+          description: The description of the resource that will appear on the Purchase Options step on the paywall
+          type: "string"
+          required: false
+        - name: PaywallShortDescription
+          in: formData
+          description: The short description of the resource that will appear at the top of paywall after the Purchase Options step
+          type: "string"
+          maxLength: 100
           required: false
       responses:
         200:
