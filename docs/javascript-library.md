@@ -15,7 +15,7 @@ For example.
 ```html
 <head>
   <title>Our Website</title>
-  <script src="https://qa-cdn.imoneza.com/paywall.min.js"></script>
+  <script src="https://cdn.imoneza.com/paywall.min.js"></script>
   <script type="text/javascript">
     iMoneza.paywall.init('b865156f-9e0d-48b6-a2a0-097456f689ec', {});
   </script>
