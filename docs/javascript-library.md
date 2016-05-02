@@ -238,7 +238,6 @@ You can optionally pass a `returnURL` parameter to specify the URL the user shou
 {
   "UserToken": "635f9d47-3416-40bc-b9f0-cb65459852ae|635978154112661889|mGhURnAejYjKmw0UGVK5QRYCJbgIxFBn8CeCrC82Q",
   "PropertyName": "Test Newspaper",
-  "PaywallDisplayStyle": "RedirectMobile",
   "ResourceName": "Home Page",
   "UserName": "Anonymous User",
   "FirstName": "",
@@ -262,10 +261,9 @@ You can optionally pass a `returnURL` parameter to specify the URL the user shou
   "Purchase": {
     "IsPurchased": false
   },
-  "AccessAction": "Grant",
   "AccessReason": "Free",
   "AccessActionURL": "",
-  "AdBlockerStatus": 2,
+  "AdBlockerStatus": "AdBlockerNotDetected",
   "IsNoCost": true,
   "IsAdSupported": false,
   "AdSupportedMessageTitle": null,
@@ -278,3 +276,20 @@ The following options can be specified as properties on the root of an options o
 | Key Name | Description | Additional Notes |
 | -------- | ----------- | ---------------- |
 | UserToken | Guid + Timestamp + PaywallSession. | Not for developer consumption. |
+| PropertyName | | |
+| ResourceName | | |
+| UserName | | |
+| FirstName | | |
+| IsAnonymousUser | | |
+| WalletBalance | | |
+| PictureURL | | |
+| Quota | | |
+| Subscription | | |
+| Purchase | | |
+| AccessReason | | |
+| AccessActionURL | | |
+| AdBlockerStatus | | |
+| IsNoCost | | |
+| IsAdSupported | | |
+| AdSupportedMessageTitle | | |
+| AdSupportedMessage | | |
