@@ -37,7 +37,7 @@ paths:
                 		 "Price": 10.00,
                 		 "Period": "Monthly",
                 		 "PaywallDescription": "",
-                		 "PaywallShortDesciprtion": ""
+                		 "PaywallShortDescription": ""
                 		},
                 		{
                 		 "SubscriptionGroupID": "e3786c3e-f733-4777-a34f-d89fb48085e5",
@@ -46,7 +46,7 @@ paths:
                 		 "Price": 5.00,
                 		 "Period": "Monthly"
                 		 "PaywallDescription": "",
-                		 "PaywallShortDesciprtion": ""
+                		 "PaywallShortDescription": ""
                 		}
                 	 ],
                 	 "PricingGroups": [
@@ -146,7 +146,7 @@ paths:
                     "TargetConversionPriceFloor": 0.00,
                     "TargetConversionHitsPerRecalculationPeriod": 0,
                 		"PaywallDescription": "",
-                		"PaywallShortDesciprtion": "",
+                		"PaywallShortDescription": "",
                     "Property": null
                   },
                   {
@@ -175,7 +175,7 @@ paths:
                     "TargetConversionPriceFloor": 0.00,
                     "TargetConversionHitsPerRecalculationPeriod": 0,
                 		"PaywallDescription": "",
-                		"PaywallShortDesciprtion": "",
+                		"PaywallShortDescription": "",
                     "Property": null
                   }
               ]
@@ -232,7 +232,7 @@ paths:
                   "TargetConversionPriceFloor": 0.00,
                   "TargetConversionHitsPerRecalculationPeriod": 0,
               		"PaywallDescription": "",
-              		"PaywallShortDesciprtion": "",
+              		"PaywallShortDescription": "",
                   "Property": null
               }
         401:
@@ -264,7 +264,7 @@ paths:
         - name: Active
           in: formData
           description: Boolean of whether this item is active
-          type: boolean
+          type: "boolean"
           required: false
         - name: URL
           in: formData
