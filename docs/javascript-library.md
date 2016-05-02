@@ -141,10 +141,6 @@ iMoneza.paywall.init('744935CD-D8D9-E311-B48B-BC305BD0D54E', {
 });
 ```
 
-_Additional example to add: setting resourceKey based on a URL parameter, like a unique ID_
-
-_Additional example to add: setting the resourceKey and resourceURL based on the URL, but removing some parameters (like paging parameters)_
-
 **Example Using an `accessGranted` Callback**
 The `accessGranted` function is called when access to a page is granted via client-side access control. A single object is passed to the callback function containing data about the access request, including current quota data (if applicable), subscription data, and single purchase data. Basic user data is also passed along, as is the reason why access is granted.
 
@@ -179,10 +175,6 @@ iMoneza.paywall.init('744935CD-D8D9-E311-B48B-BC305BD0D54E', {
 });
 ```
 
-_Change example to use the getAccessReason function_
-
-_Additional example to add: loading page content via AJAX from accessGranted_
-
 **Example Using the `accessDenied` Callback**
 The `accessDenied` function is called when access to a page is denied. The same object is passed to this function as to the `accessGranted` function.
 
@@ -196,8 +188,6 @@ iMoneza.paywall.init('744935CD-D8D9-E311-B48B-BC305BD0D54E', {
   }
 });
 ```
-
-_Additional example to add: displaying an ad or additional information from accessDenied_
 
 **Example Using the `modalFrame.open` and `modalFrame.close` Callbacks**  
 These callbacks allows merchants to customize the modal IFRAME rendered around the paywall. Both callbacks *must* be used together.
@@ -226,12 +216,6 @@ iMoneza.paywall.init({'744935CD-D8D9-E311-B48B-BC305BD0D54E', {
     }
   });
 ```
-
-_Additional example to add: resizing the modal frame with modalFrame.updateHeight_
-
-_Additional documentation to add: getAccessMessage_
-
-_Example to add: custom getAccessMessage text_
 
 ### `openModalFrame` Method
 
