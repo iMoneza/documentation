@@ -29,6 +29,8 @@ For example.
 The `iMoneza.paywall.init` method initializes the iMoneza paywall. There are two parameters passed to the method. The first is a Resource Access API key. The second is a list of custom configuration options for the page. The custom configuration options will override any settings defined on the [Paywall Settings](https://manageui.imoneza.com/PaywallSettings/Edit) page.
 
 The full list of custom configuration options that can be passed in looks like:
+
+####PaywallSettings Resposne Object
 ```javascript
 {
 	resourceKey: '',
@@ -116,7 +118,7 @@ The full list of custom configuration options that can be passed in looks like:
 	closeURL: ''
 }
 ```
-
+ResourceAccessDTO
 The following options can be specified as properties on the root of an options object:
 
 | Key Name | Description | Additional Notes |
@@ -230,3 +232,50 @@ The `closeModalFrame` method closes the modal frame that was previously opened w
 The `logOut` method will log out the current user. It will perform a redirect to iMoneza to log the user out on both iMoneza and the your site.
 
 You can optionally pass a `returnURL` parameter to specify the URL the user should be redirected to after they've been logged out. By default, they'll be returned to the page from which they initiated the logout.
+
+####ResourceAccessDTO Resposne Object
+```javascript
+{
+  "UserToken": "635f9d47-3416-40bc-b9f0-cb65459852ae|635978154112661889|mGhURnAejYjKmw0UGVK5QRYCJbgIxFBn8CeCrC82Q",
+  "PropertyName": "Test Newspaper",
+  "PaywallDisplayStyle": "RedirectMobile",
+  "ResourceName": "Home Page",
+  "UserName": "Anonymous User",
+  "FirstName": "",
+  "IsAnonymousUser": true,
+  "WalletBalance": 0.0,
+  "PictureURL": "",
+  "Quota": {
+    "IsEnabled": false,
+    "HitCount": -1,
+    "AllowedHits": -1,
+    "PeriodStartDate": "2016-05-02T19:50:11.2661889Z",
+    "PeriodName": "",
+    "IsMet": true
+  },
+  "Subscription": {
+    "IsExpired": false,
+    "ExpirationDate": "2016-05-02T19:50:11.2661889Z",
+    "IsCurrent": false,
+    "SubscriptionGroupID": ""
+  },
+  "Purchase": {
+    "IsPurchased": false
+  },
+  "AccessAction": "Grant",
+  "AccessReason": "Free",
+  "AccessActionURL": "",
+  "AdBlockerStatus": 2,
+  "IsNoCost": true,
+  "IsAdSupported": false,
+  "AdSupportedMessageTitle": null,
+  "AdSupportedMessage": null
+}
+```
+
+The following options can be specified as properties on the root of an options object:
+
+| Key Name | Description | Additional Notes |
+| -------- | ----------- | ---------------- |
+| UserToken | Guid + Timestamp + PaywallSession. | Not for developer consumption. |
+...
