@@ -30,17 +30,17 @@ The `iMoneza.paywall.init` method initializes the iMoneza paywall. There are two
 
 The full list of custom configuration options that can be passed in looks like:
 
-####PaywallSettings Resposne Object
+####PaywallSettings Response Object
 ```javascript
 {
-	resourceKey: '',
-	resourceURL: '',
-	desktopPaywallType: '',
-	mobilePaywallType: '',
-	mobileMaxWidth: 0,
-	embeddedAdBlockerDetection: {
-		element: '',
-		zIndex: 0,
+	"resourceKey": "",
+	"resourceURL": "",
+	"desktopPaywallType": "",
+	"mobilePaywallType": "",
+	"mobileMaxWidth": 0,
+	"embeddedAdBlockerDetection": {
+		"element": "",
+		"zIndex": 0,
 		openWarning: function (title, message) { },
 		closeWarning: function () { },
 		openDialog: function (title, message) { },
@@ -50,18 +50,18 @@ The full list of custom configuration options that can be passed in looks like:
 		onDialogOpened: function (title, message) { },
 		onDialogClosed: function () { }
 	},
-	embeddedPaywall: {
-		element: '',
-		cover: {
-			backgroundColor: '',
-			visibleHeight: 0,
-			visibleHeightMode: '',
-			zIndex: 0
+	"embeddedPaywall": {
+		"element": "",
+		"cover": {
+			"backgroundColor": "",
+			"visibleHeight": 0,
+			"visibleHeightMode": "",
+			"zIndex": 0
 		},
-		frame: {
-			zIndex: 0
+		"frame": {
+			"zIndex": 0
 		},
-		icon: {
+		"icon": {
 		},
 		open: function (url, isAdSupported, adSupportedMessageTitle, adSupportedMessage) { },
 		updateHeight: function (heightData) { },
@@ -70,20 +70,20 @@ The full list of custom configuration options that can be passed in looks like:
 		onHeightUpdated: function (heightData) { },
 		onClosed: function () { }
 	},
-	embeddedWallet: {
-		element: '',
-		zIndex: 0,
-		adSupportedMessage: '',
-		badConfigMessage: '',
-		freeMessage: '',
-		denyMessage: '',
-		propertyUserMessage: '',
-		purchaseMessage: '',
-		quotaMessage: '',
-		spiderMessage: '',
-		subscriptionMessage: '',
-		unknownMessage: '',
-		quotaSummaryMessage: '',
+	"embeddedWallet": {
+		"element": "",
+		"zIndex": 0,
+		"adSupportedMessage": "",
+		"badConfigMessage": "",
+		"freeMessage": "",
+		"denyMessage": "",
+		"propertyUserMessage": "",
+		"purchaseMessage": "",
+		"quotaMessage": "",
+		"spiderMessage": "",
+		"subscriptionMessage": "",
+		"unknownMessage": "",
+		"quotaSummaryMessage": "",
 		open: function () { },
 		update: function (userData) { },
 		updateHeight: function (heightData) { },
@@ -93,29 +93,29 @@ The full list of custom configuration options that can be passed in looks like:
 		onHeightUpdated: function (heightData) { },
 		onClosed: function () { }
 	},
-	embeddedConfirmation: {
-		element: '',
-		zIndex: 0,
+	"embeddedConfirmation": {
+		"element": "",
+		"zIndex": 0,
 		open: function (title, message) { },
 		close: function () { },
 		onOpened: function (title, message) { },
 		onClosed: function () { }
 	},
-	modalFrame: {
+	"modalFrame": {
+		"zIndex": 0,
 		open: function (url) { },
 		updateHeight: function (heightData) { },
-		close: function () { },
-		zIndex: 0
+		close: function () { }
 	},
-	modalPaywall: {
+	"modalPaywall": {
 		open: function (url) { },
 		close: function () { }
 	},
-	accessGranted: function (resourceAccessData) { },
-	accessDenied: function (resourceAccessData) { },
-	getOriginalURL: function () { },
-	getAccessMessage: function (resourceAccessData) { },
-	closeURL: ''
+	"accessGranted": function (resourceAccessData) { },
+	"accessDenied": function (resourceAccessData) { },
+	"getOriginalURL": function () { },
+	"getAccessMessage": function (resourceAccessData) { },
+	"closeURL": ""
 }
 ```
 
@@ -233,7 +233,7 @@ The `logOut` method will log out the current user. It will perform a redirect to
 
 You can optionally pass a `returnURL` parameter to specify the URL the user should be redirected to after they've been logged out. By default, they'll be returned to the page from which they initiated the logout.
 
-####ResourceAccessDTO Resposne Object
+####ResourceAccessDTO Response Object
 ```javascript
 {
   "UserToken": "635f9d47-3416-40bc-b9f0-cb65459852ae|635978154112661889|mGhURnAejYjKmw0UGVK5QRYCJbgIxFBn8CeCrC82Q",
@@ -276,11 +276,11 @@ The following options can be specified as properties on the root of an options o
 | Key Name | Description | Additional Notes |
 | -------- | ----------- | ---------------- |
 | UserToken | Guid + Timestamp + PaywallSession. | Not for developer consumption. |
-| PropertyName | | |
-| ResourceName | | |
-| UserName | | |
-| FirstName | | |
-| IsAnonymousUser | | |
+| PropertyName | Name of Merchant Property | |
+| ResourceName | Name of Resource | |
+| UserName | Authenticated User's Name | |
+| FirstName | Authenticated User First Name | |
+| IsAnonymousUser | True if not Authenticated | |
 | WalletBalance | | |
 | PictureURL | | |
 | Quota | | |
