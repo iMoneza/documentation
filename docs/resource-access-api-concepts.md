@@ -20,6 +20,7 @@ iMoneza API Consumers (CMS plugins) must receive, store, and transmit the user t
 Server-side access control is the ability of a web site or CMS to enforce access control at the server level, rather than relying entirely on the JavaScript Library running on the client side. Enforcing access control at the server level reduces user's ability to bypass access restrictions (like seeing the paywall).
 
 There are two basic approaches to server-side access control:
+
 1. *Redirection-based.* In this approach, whenever the server receives a page request, it makes a request to the Resource Access API to verify the user has access to the resource. If the user does, the server simply serves the page as usual; if the user doesn't have access, the server issues a redirect to the Access UI (the paywall). The JavaScript Library isn't used at all; all aspects of access control occur on the server.
 2. *AJAX-based.* In this approach, whenever the server receives a page request, it only serves a portion of the page. A short summary or teaser of the protected content is served, but the majority of it is not. The JavaScript Library is still used and runs in the user's web browser. Once the JavaScript Library has verified whether or not the user has access to the resource, custom JavaScript code makes an AJAX request to the server to retrieve the rest of the protected content. When the server receives the AJAX request, it calls the Resource Access API to validate the user's access before serving the full content.
  
