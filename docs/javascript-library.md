@@ -118,7 +118,7 @@ The full list of custom configuration options that can be passed in looks like:
 	closeURL: ''
 }
 ```
-ResourceAccessDTO
+
 The following options can be specified as properties on the root of an options object:
 
 | Key Name | Description | Additional Notes |
@@ -278,4 +278,3 @@ The following options can be specified as properties on the root of an options o
 | Key Name | Description | Additional Notes |
 | -------- | ----------- | ---------------- |
 | UserToken | Guid + Timestamp + PaywallSession. | Not for developer consumption. |
-...
