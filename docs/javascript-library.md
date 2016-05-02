@@ -3,7 +3,7 @@ title: JavaScript Library | iMoneza Documentation
 ---
 ## JavaScript Library Documentation
 
-iMoneza provides a client-side JavaScript library to enhance the paywall user experience. . 
+iMoneza provides a client-side JavaScript library to enhance the paywall user experience.
 
 ### Implementation
 The JavaScript library should be embedded into each individual page that needs to be managed by iMoneza.  This is not necessary, however, if you choose to do server-side redirection only.
