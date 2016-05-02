@@ -30,7 +30,7 @@ The `iMoneza.paywall.init` method initializes the iMoneza paywall. There are two
 
 The full list of custom configuration options that can be passed in looks like:
 
-####PaywallSettings Response Object
+####PaywallSettings Config Object (and javascript functions)
 ```javascript
 {
 	"resourceKey": "",
@@ -281,15 +281,15 @@ The following options can be specified as properties on the root of an options o
 | UserName | Authenticated User's Name | |
 | FirstName | Authenticated User First Name | |
 | IsAnonymousUser | True if not Authenticated | |
-| WalletBalance | | |
-| PictureURL | | |
-| Quota | | |
-| Subscription | | |
-| Purchase | | |
-| AccessReason | | |
+| WalletBalance | Authenticated User's Wallet Balance | |
+| PictureURL | Authenticated User's Logo | |
+| Quota | Paywall Resource Quota | |
+| Subscription | Complex Object | |
+| Purchase | Complex Object | |
+| AccessReason | Textual Access Reason | Can be "Free" or "Purchase" or "Deny" and others |
 | AccessActionURL | | |
-| AdBlockerStatus | | |
-| IsNoCost | | |
-| IsAdSupported | | |
+| AdBlockerStatus | Status of client AdBlocker | Can be "AdBlockerNotDetected" or "AdBlockerDetected" and others |
+| IsNoCost | Price is zero? | |
+| IsAdSupported | Access is Ad Supported | |
 | AdSupportedMessageTitle | | |
 | AdSupportedMessage | | |
