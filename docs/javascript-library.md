@@ -291,5 +291,5 @@ The following options can be specified as properties on the root of an options o
 | AdBlockerStatus | Status of client AdBlocker | Can be "AdBlockerNotDetected" or "AdBlockerDetected" and others |
 | IsNoCost | Price is zero? | |
 | IsAdSupported | Access is Ad Supported | |
-| AdSupportedMessageTitle | | |
-| AdSupportedMessage | | |
+| AdSupportedMessageTitle | Defined by Merchant | |
+| AdSupportedMessage | Defined by Merchant | |
