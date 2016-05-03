@@ -338,12 +338,12 @@ The following options can be specified as properties on the root of an options o
 
 ####Custom Embedded Elements
 
-*Custom embedded confirmation
+  *Custom embedded confirmation
 ````javascript
 embeddedConfirmation.open
 ````
 
-*Custom embedded ad blocker warning confirmation
+  *Custom embedded ad blocker warning confirmation
 ````javascript
 embeddedConfirmation.close
 ````
