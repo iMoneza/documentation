@@ -374,6 +374,24 @@ embeddedAdBlockerDetection.openDialog
 
 ####Setting resourceKey based on URL parameter or unique ID
 
+```html
+<html>
+<head>
+  <title>Our Website</title>
+  <script src="https://cdn.imoneza.com/paywall.min.js"></script>
+  <script type="text/javascript">
+    iMoneza.paywall.init('b865156f-9e0d-48b6-a2a0-097456f689ec', 
+    {
+      resourceKey: "1234321"
+    });
+  </script>
+</head>
+  <body id="1234321">
+  ...
+  </body>
+</html>
+```
+
 ####Loading page content via AJAX in onAccessGranted
 
 ####Resizing a custom modal implementation
