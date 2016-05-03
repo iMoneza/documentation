@@ -302,7 +302,7 @@ The following options can be specified as properties on the root of an options o
   "FirstName": "",
   "IsAnonymousUser": false,
   "WalletBalance": 0.0,
-  "PictureURL": "",
+  "PictureURL": ""
 }
 ```
 
@@ -316,3 +316,21 @@ The following options can be specified as properties on the root of an options o
 | IsAnonymousUser | True if not Authenticated | |
 | WalletBalance | Authenticated User's Wallet Balance | |
 | PictureURL | Authenticated User's Logo | |
+
+####sendHeight() HeightData
+```javascript
+{
+  "clientHeight": 0,
+  "scrollHeight": 0,
+  "offsetHeight": 0
+}
+```
+
+The following options can be specified as properties on the root of an options object:
+
+| Key Name | Description | Additional Notes |
+| -------- | ----------- | ---------------- |
+| clientHeight | document.documentElement.clientHeight |  |
+| clientHeight | document.documentElement.scrollHeight |  |
+| clientHeight | document.documentElement.offsetHeight |  |
+
