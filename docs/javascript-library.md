@@ -374,6 +374,28 @@ embeddedAdBlockerDetection.openDialog
 
 ####Setting resourceKey based on URL parameter or unique ID
 
+  * URL
+```html
+<html>
+<head>
+  <title>Our Website</title>
+  <script src="https://cdn.imoneza.com/paywall.min.js"></script>
+  <script type="text/javascript">
+    iMoneza.paywall.init('b865156f-9e0d-48b6-a2a0-097456f689ec', 
+    {
+      resourceKey: "URL param"
+    });
+  </script>
+
+</head>
+  <body>
+  ...
+  </body>
+</html>
+```
+
+
+  * Unique Id
 ```html
 <html>
 <head>
@@ -385,6 +407,7 @@ embeddedAdBlockerDetection.openDialog
       resourceKey: "1234321"
     });
   </script>
+
 </head>
   <body id="1234321">
   ...
@@ -402,3 +425,31 @@ modalFrame.updateHeight
 
 ####Providing custom text in ```getAccessMessage```
 
+####Pagination ignorance
+
+Explain it.
+
+```
+/news/long-article?page=1
+/news/long-article?page=2
+```
+
+  * Ignoring pagination
+```html
+<html>
+<head>
+  <title>Our Website</title>
+  <script src="https://cdn.imoneza.com/paywall.min.js"></script>
+  <script type="text/javascript">
+    iMoneza.paywall.init('b865156f-9e0d-48b6-a2a0-097456f689ec', 
+    {
+      resourceKey: "/news/long-article"
+    });
+  </script>
+
+</head>
+  <body>
+  ...
+  </body>
+</html>
+```
