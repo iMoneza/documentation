@@ -233,6 +233,10 @@ The `logOut` method will log out the current user. It will perform a redirect to
 
 You can optionally pass a `returnURL` parameter to specify the URL the user should be redirected to after they've been logged out. By default, they'll be returned to the page from which they initiated the logout.
 
+###Paywall PurchaseOptions
+
+You have programatic access to the details of the selected Resource via the ResourceAccessDTO object.
+
 ####ResourceAccessDTO Response Object
 ```javascript
 {
@@ -283,7 +287,7 @@ The following options can be specified as properties on the root of an options o
 | IsAnonymousUser | True if not Authenticated | |
 | WalletBalance | Authenticated User's Wallet Balance | |
 | PictureURL | Authenticated User's Logo | |
-| Quota | Paywall Resource Quota | |
+| Quota | Complex Object | |
 | Subscription | Complex Object | |
 | Purchase | Complex Object | |
 | AccessReason | Textual Access Reason | Can be "Free" or "Purchase" or "Deny" and others |
@@ -339,11 +343,44 @@ The following options can be specified as properties on the root of an options o
 ####Custom Embedded Elements
 
   * Custom embedded confirmation
-````javascript
-embeddedConfirmation.open
-````
 
-  * Custom embedded ad blocker warning confirmation
-````javascript
+```javascript
+embeddedConfirmation.open
+```
+
+```javascript
 embeddedConfirmation.close
-````
+```
+
+  * Custom embedded ad blocker warning confirmation when ```NoCostAdBlockerAction=ShowWarning```
+
+```javascript
+embeddedAdBlockerDetection.openWarning
+``` 
+
+```javascript
+embeddedAdBlockerDetection.closeWarning
+``` 
+
+  * Custom embedded ad blocker dialog when ```NoCostAdBlockerAction=RequireDisable```
+
+```javascript
+embeddedAdBlockerDetection.openDialog
+``` 
+
+```javascript
+embeddedAdBlockerDetection.openDialog
+``` 
+
+####Setting resourceKey based on URL parameter or unique ID
+
+####Loading page content via AJAX in onAccessGranted
+
+####Resizing a custom modal implementation
+
+```javascript
+modalFrame.updateHeight
+```
+
+####Providing custom text in ```getAccessMessage```
+
