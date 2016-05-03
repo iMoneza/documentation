@@ -1,0 +1,68 @@
+<h2 class="swagger-url">{{ include.baseurl }}</h2>
+{% for route in include.swagger.paths %}
+<div class="swagger-paths">
+    <h2 class="swagger-path">{{ route[0] }}</h2>
+    {% for method in route[1] %}
+    <div class="swagger-method swagger-method-{{ method[0] }}">
+        <h3 class="swagger-method-title">
+            <span class="swagger-method-link">
+                <span class="swagger-method-name">{{ method[0] | upcase }}</span>
+                {{ method[1].summary | markdownify }}
+            </span>
+        </h3>
+        <div class="swagger-method-details collapse">
+            {% if method[1].parameters %}
+            <div class="swagger-parameters">
+                <h4>Parameters</h4>
+                <table class="swagger-parameters-table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Located in</th>
+                        <th>Description</th>
+                    </tr>
+                    {% for parameter in method[1].parameters %}
+                    <tr>
+                        <td>
+                            {% if parameter.required %}
+                                <span class="swagger-parameter-required">
+                                {% endif %}
+                                {{ parameter.name }}
+                                {% if parameter.required %}
+                                </span>
+                            {% endif %}
+                        </td>
+                        <td>{{ parameter.in }}</td>
+                        <td>{{ parameter.description | markdownify }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            {% endif %}
+            {% if method[1].responses %}
+            <div class="swagger-response">
+                <h4>Responses</h4>
+                {% for response in method[1].responses %}
+                <h5>
+                    <span class="swagger-response-code">{{ response[0] }}</span>
+                    {{ response[1].description }}
+                </h5>
+                {% for content_type in include.swagger.produces %}
+                {% if response[1].examples[content_type] %}
+                {% assign example = response[1].examples[content_type] %}
+                {% if content_type contains 'json' %}
+                {% highlight json %}{{ example }}{% endhighlight %}
+                {% elsif content_type contains 'xml' %}
+                {% highlight xml %}{{ example }}{% endhighlight %}
+                {% else %}
+                {% highlight http %}{{ example }}{% endhighlight %}
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endfor %}

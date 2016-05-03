@@ -1,0 +1,59 @@
+---
+---
+@charset "utf-8";
+
+/** variables **/
+$base-font-size:   16px;
+$spacing-unit:     30px;
+$grey-color:       #828282;
+$grey-color-light: lighten($grey-color, 40%);
+$grey-color-dark:  darken($grey-color, 25%);
+
+/**
+ * Set `margin-bottom` to maintain vertical rhythm
+ */
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+ul, ol, dl, figure,
+%vertical-rhythm {
+  margin-bottom: $spacing-unit / 2;
+}
+
+@import 'swagger';
+@import 'syntax-highlighting';
+
+header {
+  border-bottom: 1px solid #e7e7e7;
+  font-size: 3rem;
+  img {
+    height: 35px;
+    vertical-align: text-top;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+}
+main {
+  padding-top: 2rem;
+}
+main h2, #toc h3 {
+  margin-top: 0;
+}
+
+table {
+  border: 1px solid #cccccc;
+  border-collapse: collapse;
+  margin: 1rem 0 2rem 0;
+  th {
+    background-color: #cccccc;
+  }
+  th, td {
+    padding: 1rem;
+    border: 1px solid #cccccc;
+    width: 33%;
+  }
+}
+pre.highlight {
+  word-break: normal;
+  overflow-x: auto;
+}
