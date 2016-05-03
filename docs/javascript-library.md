@@ -293,3 +293,26 @@ The following options can be specified as properties on the root of an options o
 | IsAdSupported | Access is Ad Supported | |
 | AdSupportedMessageTitle | Defined by Merchant | |
 | AdSupportedMessage | Defined by Merchant | |
+
+####UserDTO Response Object
+```javascript
+{
+  "UserToken": "",
+  "UserName": "",
+  "FirstName": "",
+  "IsAnonymousUser": false,
+  "WalletBalance": 0.0,
+  "PictureURL": "",
+}
+```
+
+The following options can be specified as properties on the root of an options object:
+
+| Key Name | Description | Additional Notes |
+| -------- | ----------- | ---------------- |
+| UserToken | Guid + Timestamp + PaywallSession. | Not for developer consumption. |
+| UserName | Authenticated User's Name | |
+| FirstName | Authenticated User First Name | |
+| IsAnonymousUser | True if not Authenticated | |
+| WalletBalance | Authenticated User's Wallet Balance | |
+| PictureURL | Authenticated User's Logo | |
