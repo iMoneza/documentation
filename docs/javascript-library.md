@@ -334,3 +334,16 @@ The following options can be specified as properties on the root of an options o
 | clientHeight | document.documentElement.scrollHeight |  |
 | clientHeight | document.documentElement.offsetHeight |  |
 
+###Examples
+
+####Custom Embedded Elements
+
+*Custom embedded confirmation
+````javascript
+embeddedConfirmation.open
+````
+
+*Custom embedded ad blocker warning confirmation
+````javascript
+embeddedConfirmation.close
+````
