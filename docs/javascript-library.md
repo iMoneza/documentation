@@ -33,89 +33,89 @@ The full list of custom configuration options that can be passed in looks like:
 ####PaywallSettings Config Object (and javascript functions)
 ```javascript
 {
-	"resourceKey": "",
-	"resourceURL": "",
-	"desktopPaywallType": "",
-	"mobilePaywallType": "",
-	"mobileMaxWidth": 0,
-	"embeddedAdBlockerDetection": {
-		"element": "",
-		"zIndex": 0,
-		openWarning: function (title, message) { },
-		closeWarning: function () { },
-		openDialog: function (title, message) { },
-		closeDialog: function () { },
-		onWarningOpened: function (title, message) { },
-		onWarningClosed: function () { },
-		onDialogOpened: function (title, message) { },
-		onDialogClosed: function () { }
-	},
-	"embeddedPaywall": {
-		"element": "",
-		"cover": {
-			"backgroundColor": "",
-			"visibleHeight": 0,
-			"visibleHeightMode": "",
-			"zIndex": 0
-		},
-		"frame": {
-			"zIndex": 0
-		},
-		"icon": {
-		},
-		open: function (url, isAdSupported, adSupportedMessageTitle, adSupportedMessage) { },
-		updateHeight: function (heightData) { },
-		close: function (url) { },
-		onOpened: function () { },
-		onHeightUpdated: function (heightData) { },
-		onClosed: function () { }
-	},
-	"embeddedWallet": {
-		"element": "",
-		"zIndex": 0,
-		"adSupportedMessage": "",
-		"badConfigMessage": "",
-		"freeMessage": "",
-		"denyMessage": "",
-		"propertyUserMessage": "",
-		"purchaseMessage": "",
-		"quotaMessage": "",
-		"spiderMessage": "",
-		"subscriptionMessage": "",
-		"unknownMessage": "",
-		"quotaSummaryMessage": "",
-		open: function () { },
-		update: function (userData) { },
-		updateHeight: function (heightData) { },
-		close: function () { },
-		onOpened: function () { },
-		onUpdated: function (userData) { },
-		onHeightUpdated: function (heightData) { },
-		onClosed: function () { }
-	},
-	"embeddedConfirmation": {
-		"element": "",
-		"zIndex": 0,
-		open: function (title, message) { },
-		close: function () { },
-		onOpened: function (title, message) { },
-		onClosed: function () { }
-	},
-	"modalFrame": {
-		"zIndex": 0,
-		open: function (url) { },
-		updateHeight: function (heightData) { },
-		close: function () { }
-	},
-	"modalPaywall": {
-		open: function (url) { },
-		close: function () { }
-	},
-	"accessGranted": function (resourceAccessData) { },
-	"accessDenied": function (resourceAccessData) { },
-	"getOriginalURL": function () { },
-	"getAccessMessage": function (resourceAccessData) { },
-	"closeURL": ""
+  "resourceKey": "",
+  "resourceURL": "",
+  "desktopPaywallType": "",
+  "mobilePaywallType": "",
+  "mobileMaxWidth": 0,
+  "embeddedAdBlockerDetection": {
+    "element": "",
+    "zIndex": 0,
+    openWarning: function (title, message) { },
+    closeWarning: function () { },
+    openDialog: function (title, message) { },
+    closeDialog: function () { },
+    onWarningOpened: function (title, message) { },
+    onWarningClosed: function () { },
+    onDialogOpened: function (title, message) { },
+    onDialogClosed: function () { }
+  },
+  "embeddedPaywall": {
+    "element": "",
+    "cover": {
+      "backgroundColor": "",
+      "visibleHeight": 0,
+      "visibleHeightMode": "",
+      "zIndex": 0
+    },
+    "frame": {
+      "zIndex": 0
+    },
+    "icon": {
+    },
+    open: function (url, isAdSupported, adSupportedMessageTitle, adSupportedMessage) { },
+    updateHeight: function (heightData) { },
+    close: function (url) { },
+    onOpened: function () { },
+    onHeightUpdated: function (heightData) { },
+    onClosed: function () { }
+  },
+  "embeddedWallet": {
+    "element": "",
+    "zIndex": 0,
+    "adSupportedMessage": "",
+    "badConfigMessage": "",
+    "freeMessage": "",
+    "denyMessage": "",
+    "propertyUserMessage": "",
+    "purchaseMessage": "",
+    "quotaMessage": "",
+    "spiderMessage": "",
+    "subscriptionMessage": "",
+    "unknownMessage": "",
+    "quotaSummaryMessage": "",
+    open: function () { },
+    update: function (userData) { },
+    updateHeight: function (heightData) { },
+    close: function () { },
+    onOpened: function () { },
+    onUpdated: function (userData) { },
+    onHeightUpdated: function (heightData) { },
+    onClosed: function () { }
+  },
+  "embeddedConfirmation": {
+    "element": "",
+    "zIndex": 0,
+    open: function (title, message) { },
+    close: function () { },
+    onOpened: function (title, message) { },
+    onClosed: function () { }
+  },
+  "modalFrame": {
+    open: function (url) { },
+    updateHeight: function (heightData) { },
+    close: function () { },
+    "zIndex": 0
+  },
+  "modalPaywall": {
+    open: function (url) { },
+    close: function () { }
+  },
+  "accessGranted": function (resourceAccessData) { },
+  "accessDenied": function (resourceAccessData) { },
+  "getOriginalURL": function () { },
+  "getAccessMessage": function (resourceAccessData) { },
+  "closeURL": ""
 }
 ```
 
@@ -198,18 +198,18 @@ These callbacks allows merchants to customize the modal IFRAME rendered around t
 iMoneza.paywall.init({'744935CD-D8D9-E311-B48B-BC305BD0D54E', {
   modalFrame: {
     open: function (url) {
-        var docWidth = window.innerWidth, 
-            docHeight = window.innerHeight, 
-            customWidth = 700, 
-            customHeight = 600
-            body = document.querySelectorAll('body')[0];
-            
-        body.insertAdjacentHTML('afterbegin', 
-            '<div id="CustomOverlay" style="position: absolute; width: ' + customWidth + 'px; height: ' + customHeight + 'px; margin-top: ' + ((docHeight - customHeight) / 2) + 'px; margin-left: ' + ((docWidth - customHeight) / 2) + 'px; z-index: 10001"><a href=\"javascript:CustomCloseAndRedirect()\">Close</a><iframe src=\"' + url + '\" width="100%" height="100%" frameborder="1"></iframe></div>'
-        );
-        body.insertAdjacentHTML('afterbegin', 
-            '<div id="CustomOverlayBackground" style="position: fixed; left: 0px; top: 0px; width:100%; height:100%; z-index: 10000; background-color: black;"></div>'
-        );
+      var docWidth = window.innerWidth, 
+        docHeight = window.innerHeight, 
+        customWidth = 700, 
+        customHeight = 600
+        body = document.querySelectorAll('body')[0];
+          
+      body.insertAdjacentHTML('afterbegin', 
+        '<div id="CustomOverlay" style="position: absolute; width: ' + customWidth + 'px; height: ' + customHeight + 'px; margin-top: ' + ((docHeight - customHeight) / 2) + 'px; margin-left: ' + ((docWidth - customHeight) / 2) + 'px; z-index: 10001"><a href=\"javascript:CustomCloseAndRedirect()\">Close</a><iframe src=\"' + url + '\" width="100%" height="100%" frameborder="1"></iframe></div>'
+      );
+      body.insertAdjacentHTML('afterbegin', 
+        '<div id="CustomOverlayBackground" style="position: fixed; left: 0px; top: 0px; width:100%; height:100%; z-index: 10000; background-color: black;"></div>'
+      );
       },
       close: function () {
         document.getElementById('CustomOverlay').parentNode.removeChild(document.getElementById('CustomOverlay'));
