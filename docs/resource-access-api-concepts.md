@@ -13,7 +13,7 @@ The user token is designed to be transparent to end users. It can only be retrie
 
 There are also temporary user tokens. These are single-use tokens that can also be used by the Access API to return resource access data. However, a temporary user token cannot be stored as a cookie, as it’s immediately invalidated after the first time it’s used. However, the one-time Temporary User Token will return a user token which can be stored.
 
-Resource Access API consumers (CMS plugins) must receive, store, and transmit the user token. The user token is not designed to be interpreted by any conusmer - any attempts to parse and extract data from the token are unsupported and might break in the future. Instead, just use the user token and Resource Access API to get data about a user.
+Resource Access API consumers (CMS plugins or custom coded websites) must receive, store, and transmit the user token. The user token is not designed to be interpreted by any consumer - any attempts to parse and extract data from the token are unsupported and might break in the future. Instead, just use the user token and Resource Access API to get data about a user.
 
 ### Server-side Access Control
 
@@ -77,18 +77,18 @@ The following three use cases explain how the above control flow is used to secu
 This is the general process that should be implemented by iMoneza consumers that enforce AJAX-based server-side access control.
 
 1.	The user requests a page.
-2.	The CMS plugin ensures that a response is served with the protected content truncated, removed, or replaced.
+2.	The consumer website ensures that a response is served with the protected content truncated, removed, or replaced.
   * For instance, it may return only the first 100 words of the protected content, or it could return a summary instead of the actual content.
   * The rest of the page, outside the protected content, would be returned as usual.
   * A reference to the JavaScript Library would be included in the response, including a custom `onAccessGranted` callback function.
-  * A dynamic resource creation XML block can still be present.
+  * (Note: A dynamic resource creation XML block can still be present)  
 3.	The JavaScript Library runs in the user's web browser, determining if the user has access to the resource.
   * The JavaScript Library will set a cookie named `iMonezaUT` that contains the user token.
-4.	If/once the user has access (for instance, after purchasing the item through the paywall), the JavaScript Library calls a custom `onAccessGranted` callback function added to the page by the CMS plugin.
-5.	The custom `onAccessGranted` function performs an AJAX request back to the CMS plugin.
-6.	While processing the AJAX request, the CMS plugin makes a call to the Resource Access API to verify the user has access to the resource.
+4.	If/once the user has access (for instance, after purchasing the item through the paywall), the JavaScript Library calls a custom `onAccessGranted` callback function (previously added to the page by the website in step 2).
+5.	The custom `onAccessGranted` function performs an AJAX request back to the website.
+6.	While processing the AJAX request, the website makes a call to the Resource Access API to verify the user has access to the resource.
   * A `GET` request to the endpoint `/api/Resource/{apiKey}/{resourceKey}?UserToken={userToken}&ResourceURL={url}` is performed.  The `userToken` contains the value of the `iMonezaUT` cookie set by the JavaScript Library.
-  * If the `AccessActionURL` value returned by the Resource Access API is empty, the CMS plugin then serves the full content for the resource, and the custom `onAccessGranted` function renders the successful result.
-  * If the `AccessActionURL` value returned by the Resource Access API is not empty, the user does not have access. The CMS plugin returns a 403 error and the custom `onAccessGranted` doesn't make any changes to the page.
+  * If the `AccessActionURL` value returned by the Resource Access API is empty, the website then serves the full content for the resource, and the custom `onAccessGranted` function renders the successful result.
+  * If the `AccessActionURL` value returned by the Resource Access API is not empty, the user does not have access. The website returns a 403 error and the custom `onAccessGranted` doesn't make any changes to the page.
 
 One advantage of the AJAX-based approach is that no special accommodations need to be made to handle the `iMonezaTUT` URL parameter.
