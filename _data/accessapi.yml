@@ -53,40 +53,40 @@ paths:
           description: A resource access object
           examples:
             application/json: >
-                {
-                  "UserToken": "e313128d-21c4-4dad-a8e4-8928993f08a7|635633302264795088|2OnHROFPE3WgONGDeUyZJkluyORc0UBYOXABTLaU",
-                  "PropertyName": "Acme, Inc.",
-                  "PaywallDisplayStyle": "RedirectMobile",
-                  "ResourceName": "Front Page News",
-                  "UserName": "johndoe",
-                  "FirstName": "John",
-                  "IsAnonymousUser": false,
-                  "IsAdSupported": false,
-                  "AdSupportedMessageTitle": "",
-                  "AdSupportedMessage": "",
-                  "AdBlockerStatus": "Unknown",
-                  "IsNoCost": false,
-                  "Quota": {
-                	"IsEnabled": false,
-                	"HitCount": -1,
-                	"AllowedHits": -1,
-                	"PeriodStartDate": "2015-03-30T16:37:06.4795088Z",
-                	"PeriodName": "",
-                	"IsMet": true
-                  },
-                  "Subscription": {
-                	"IsExpired": false,
-                	"ExpirationDate": "2015-03-30T16:37:06.4795088Z",
-                	"IsCurrent": false,
-                	"SubscriptionGroupID": ""
-                  },
-                  "Purchase": {
-                	"IsPurchased": false
-                  },
-                  "AccessAction": "Purchase",
-                  "AccessReason": "Deny",
-                  "AccessActionURL": "https://accessui.imoneza.com/ResourceAccess/?ApiKey=2ba53ade-07a7-427f-8e06-2bc7733a2fc8&ResourceKey=51&UserToken=e313128d-21c4-4dad-a8e4-8928993f08a7%7c635633302264795088%7c2OnHROFPE3WgONGDeUyZJkluyORc0UBYOXABTLaU&SendTemporaryUserToken=True"
-                }
+              {
+                "UserToken": "e313128d-21c4-4dad-a8e4-8928993f08a7|635633302264795088|2OnHROFPE3WgONGDeUyZJkluyORc0UBYOXABTLaU",
+                "PropertyName": "Acme, Inc.",
+                "PaywallDisplayStyle": "RedirectMobile",
+                "ResourceName": "Front Page News",
+                "UserName": "johndoe",
+                "FirstName": "John",
+                "IsAnonymousUser": false,
+                "IsAdSupported": false,
+                "AdSupportedMessageTitle": "",
+                "AdSupportedMessage": "",
+                "AdBlockerStatus": "Unknown",
+                "IsNoCost": false,
+                "Quota": {
+                  "IsEnabled": false,
+                  "HitCount": -1,
+                  "AllowedHits": -1,
+                  "PeriodStartDate": "2015-03-30T16:37:06.4795088Z",
+                  "PeriodName": "",
+                  "IsMet": true
+                },
+                "Subscription": {
+                  "IsExpired": false,
+                  "ExpirationDate": "2015-03-30T16:37:06.4795088Z",
+                  "IsCurrent": false,
+                  "SubscriptionGroupID": ""
+                },
+                "Purchase": {
+                  "IsPurchased": false
+                },
+                "AccessAction": "Purchase",
+                "AccessReason": "Deny",
+                "AccessActionURL": "https://accessui.imoneza.com/ResourceAccess/?ApiKey=2ba53ade-07a7-427f-8e06-2bc7733a2fc8&ResourceKey=51&UserToken=e313128d-21c4-4dad-a8e4-8928993f08a7%7c635633302264795088%7c2OnHROFPE3WgONGDeUyZJkluyORc0UBYOXABTLaU&SendTemporaryUserToken=True"
+              }
         401:
           description: Authentication Failure
         403:
@@ -122,34 +122,34 @@ paths:
           description: A resource access object
           examples:
             application/json: >
-                {
-                  "UserToken": "e313128d-21c4-4dad-a8e4-8928993f08a7|635633302264795088|2OnHROFPE3WgONGDeUyZJkluyORc0UBYOXABTLaU",
-                  "PropertyName": "Acme, Inc.",
-                  "PaywallDisplayStyle": "RedirectMobile",
-                  "ResourceName": "Front Page News",
-                  "UserName": "johndoe",
-                  "IsAnonymousUser": false,
-                  "Quota": {
-                	"IsEnabled": false,
-                	"HitCount": -1,
-                	"AllowedHits": -1,
-                	"PeriodStartDate": "2015-03-30T16:37:06.4795088Z",
-                	"PeriodName": "",
-                	"IsMet": true
-                  },
-                  "Subscription": {
-                	"IsExpired": false,
-                	"ExpirationDate": "2015-03-30T16:37:06.4795088Z",
-                	"IsCurrent": false,
-                	"SubscriptionGroupID": ""
-                  },
-                  "Purchase": {
-                	"IsPurchased": false
-                  },
-                  "AccessAction": "Purchase",
-                  "AccessReason": "Deny",
-                  "AccessActionURL": "https://accessui.imoneza.com/ResourceAccess/?ApiKey=2ba53ade-07a7-427f-8e06-2bc7733a2fc8&ResourceKey=51&UserToken=e313128d-21c4-4dad-a8e4-8928993f08a7%7c635633302264795088%7c2OnHROFPE3WgONGDeUyZJkluyORc0UBYOXABTLaU&SendTemporaryUserToken=True"
-                }
+              {
+                "UserToken": "e313128d-21c4-4dad-a8e4-8928993f08a7|635633302264795088|2OnHROFPE3WgONGDeUyZJkluyORc0UBYOXABTLaU",
+                "PropertyName": "Acme, Inc.",
+                "PaywallDisplayStyle": "RedirectMobile",
+                "ResourceName": "Front Page News",
+                "UserName": "johndoe",
+                "IsAnonymousUser": false,
+                "Quota": {
+                  "IsEnabled": false,
+                  "HitCount": -1,
+                  "AllowedHits": -1,
+                  "PeriodStartDate": "2015-03-30T16:37:06.4795088Z",
+                  "PeriodName": "",
+                  "IsMet": true
+                },
+                "Subscription": {
+                  "IsExpired": false,
+                  "ExpirationDate": "2015-03-30T16:37:06.4795088Z",
+                  "IsCurrent": false,
+                  "SubscriptionGroupID": ""
+                },
+                "Purchase": {
+                  "IsPurchased": false
+                },
+                "AccessAction": "Purchase",
+                "AccessReason": "Deny",
+                "AccessActionURL": "https://accessui.imoneza.com/ResourceAccess/?ApiKey=2ba53ade-07a7-427f-8e06-2bc7733a2fc8&ResourceKey=51&UserToken=e313128d-21c4-4dad-a8e4-8928993f08a7%7c635633302264795088%7c2OnHROFPE3WgONGDeUyZJkluyORc0UBYOXABTLaU&SendTemporaryUserToken=True"
+              }
         401:
           description: Authentication Failure
         403:

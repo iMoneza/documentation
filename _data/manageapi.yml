@@ -19,87 +19,87 @@ paths:
           description: A property object
           examples:
             application/json: >
-                {
-                	 "Name": "WordPress Plugin Sandbox",
-                	 "Title": "WordPress Plugin Sandbox",
-                	 "DynamicallyCreateResources": false,
-                	 "EnableQuota": true,
-                	 "EnableSubscriptions": true,
-                	 "EnableSinglePurchases": true,
-                	 "FreeResourcesRequireAuthentication": false,
-                	 "Quota": 2,
-                	 "QuotaPeriod": "Monthly",
-                	 "SubscriptionGroups": [
-                		{
-                		 "SubscriptionGroupID": "57f294fb-9e4e-4d54-bd9c-514d0165650a",
-                		 "Name": "Premium",
-                		 "Title": "Premium Subscription",
-                		 "Price": 10.00,
-                		 "Period": "Monthly",
-                		 "PaywallDescription": "",
-                		 "PaywallShortDescription": ""
-                		},
-                		{
-                		 "SubscriptionGroupID": "e3786c3e-f733-4777-a34f-d89fb48085e5",
-                		 "Name": "Default",
-                		 "Title": "Subscription",
-                		 "Price": 5.00,
-                		 "Period": "Monthly"
-                		 "PaywallDescription": "",
-                		 "PaywallShortDescription": ""
-                		}
-                	 ],
-                	 "PricingGroups": [
-                		{
-                		 "PricingGroupID": "a0dbe1be-eef9-4f2e-a10f-5a4c35ac2caa",
-                		 "Name": "Pay What You Want",
-                		 "IsDefault": false,
-                		 "PricingModel": "VariablePrice",
-                		 "Price": 0.00,
-                		 "ExpirationPeriodUnit": "Never",
-                		 "ExpirationPeriodValue": 0,
-                		"TargetConversionRate": 0.00,
-                		"TargetConversionPriceFloor": 0.00,
-                		"TargetConversionHitsPerRecalculationPeriod": 0
-                		},
-                		{
-                		 "PricingGroupID": "ea45a17f-b4b3-474f-8871-b769bdfbebaf",
-                		 "Name": "Premium",
-                		 "IsDefault": false,
-                		 "PricingModel": "FixedPrice",
-                		 "Price": 1.00,
-                		 "ExpirationPeriodUnit": "Never",
-                		 "ExpirationPeriodValue": 0,
-                		"TargetConversionRate": 0.00,
-                		"TargetConversionPriceFloor": 0.00,
-                		"TargetConversionHitsPerRecalculationPeriod": 0
-                		},
-                		{
-                		 "PricingGroupID": "d0cb0c67-743f-41e7-bd90-dc3991743f90",
-                		 "Name": "Default",
-                		 "IsDefault": true,
-                		 "PricingModel": "FixedPrice",
-                		 "Price": 0.50,
-                		 "ExpirationPeriodUnit": "Never",
-                		 "ExpirationPeriodValue": 0,
-                		"TargetConversionRate": 0.00,
-                		"TargetConversionPriceFloor": 0.00,
-                		"TargetConversionHitsPerRecalculationPeriod": 0
-                		},
-                		{
-                		 "PricingGroupID": "f3a10c67-28b4-41e7-bd90-dc3991746cd4",
-                		 "Name": "Features",
-                		 "IsDefault": true,
-                		 "PricingModel": "TargetConversion",
-                		 "Price": 0.50,
-                		 "ExpirationPeriodUnit": "Never",
-                		 "ExpirationPeriodValue": 0,
-                		"TargetConversionRate": 0.20,
-                		"TargetConversionPriceFloor": 0.05,
-                		"TargetConversionHitsPerRecalculationPeriod": 100
-                		}
-                	  ]
-                	}
+              {
+                "Name": "WordPress Plugin Sandbox",
+                "Title": "WordPress Plugin Sandbox",
+                "DynamicallyCreateResources": false,
+                "EnableQuota": true,
+                "EnableSubscriptions": true,
+                "EnableSinglePurchases": true,
+                "FreeResourcesRequireAuthentication": false,
+                "Quota": 2,
+                "QuotaPeriod": "Monthly",
+                "SubscriptionGroups": [
+                  {
+                   "SubscriptionGroupID": "57f294fb-9e4e-4d54-bd9c-514d0165650a",
+                   "Name": "Premium",
+                   "Title": "Premium Subscription",
+                   "Price": 10.00,
+                   "Period": "Monthly",
+                   "PaywallDescription": "",
+                   "PaywallShortDescription": ""
+                  },
+                  {
+                   "SubscriptionGroupID": "e3786c3e-f733-4777-a34f-d89fb48085e5",
+                   "Name": "Default",
+                   "Title": "Subscription",
+                   "Price": 5.00,
+                   "Period": "Monthly"
+                   "PaywallDescription": "",
+                   "PaywallShortDescription": ""
+                  }
+                ],
+                "PricingGroups": [
+                  {
+                    "PricingGroupID": "a0dbe1be-eef9-4f2e-a10f-5a4c35ac2caa",
+                    "Name": "Pay What You Want",
+                    "IsDefault": false,
+                    "PricingModel": "VariablePrice",
+                    "Price": 0.00,
+                    "ExpirationPeriodUnit": "Never",
+                    "ExpirationPeriodValue": 0,
+                    "TargetConversionRate": 0.00,
+                    "TargetConversionPriceFloor": 0.00,
+                    "TargetConversionHitsPerRecalculationPeriod": 0
+                  },
+                  {
+                    "PricingGroupID": "ea45a17f-b4b3-474f-8871-b769bdfbebaf",
+                    "Name": "Premium",
+                    "IsDefault": false,
+                    "PricingModel": "FixedPrice",
+                    "Price": 1.00,
+                    "ExpirationPeriodUnit": "Never",
+                    "ExpirationPeriodValue": 0,
+                    "TargetConversionRate": 0.00,
+                    "TargetConversionPriceFloor": 0.00,
+                    "TargetConversionHitsPerRecalculationPeriod": 0
+                  },
+                  {
+                    "PricingGroupID": "d0cb0c67-743f-41e7-bd90-dc3991743f90",
+                    "Name": "Default",
+                    "IsDefault": true,
+                    "PricingModel": "FixedPrice",
+                    "Price": 0.50,
+                    "ExpirationPeriodUnit": "Never",
+                    "ExpirationPeriodValue": 0,
+                    "TargetConversionRate": 0.00,
+                    "TargetConversionPriceFloor": 0.00,
+                    "TargetConversionHitsPerRecalculationPeriod": 0
+                  },
+                  {
+                    "PricingGroupID": "f3a10c67-28b4-41e7-bd90-dc3991746cd4",
+                    "Name": "Features",
+                    "IsDefault": true,
+                    "PricingModel": "TargetConversion",
+                    "Price": 0.50,
+                    "ExpirationPeriodUnit": "Never",
+                    "ExpirationPeriodValue": 0,
+                    "TargetConversionRate": 0.20,
+                    "TargetConversionPriceFloor": 0.05,
+                    "TargetConversionHitsPerRecalculationPeriod": 100
+                  }
+                ]
+              }
         401:
           description: Authentication Failure
         403:
@@ -120,64 +120,64 @@ paths:
           examples:
             application/json: >
               [
-                  {
-                    "Name": "Third Post",
-                    "ExternalKey": "13",
-                    "Active": true,
-                    "URL": "http://localhost:64653/?p=13",
-                    "Title": "Third Post",
-                    "Byline": "",
-                    "Description": "",
-                    "PublicationDate": "2014-07-07T16:08:30",
-                    "PricingGroup": {
-                      "PricingGroupID": "a0dbe1be-eef9-4f2e-a10f-5a4c35ac2caa",
-                      "Name": "Pay What You Want",
-                      "IsDefault": false,
-                      "PricingModel": "VariablePrice",
-                      "Price": 0.00,
-                      "ExpirationPeriodUnit": "Never",
-                      "ExpirationPeriodValue": 0
-                    },
-                    "PricingModel": "Inherit",
+                {
+                  "Name": "Third Post",
+                  "ExternalKey": "13",
+                  "Active": true,
+                  "URL": "http://localhost:64653/?p=13",
+                  "Title": "Third Post",
+                  "Byline": "",
+                  "Description": "",
+                  "PublicationDate": "2014-07-07T16:08:30",
+                  "PricingGroup": {
+                    "PricingGroupID": "a0dbe1be-eef9-4f2e-a10f-5a4c35ac2caa",
+                    "Name": "Pay What You Want",
+                    "IsDefault": false,
+                    "PricingModel": "VariablePrice",
                     "Price": 0.00,
                     "ExpirationPeriodUnit": "Never",
-                    "ExpirationPeriodValue": 0,
-                    "TargetConversionRate": 0.00,
-                    "TargetConversionPriceFloor": 0.00,
-                    "TargetConversionHitsPerRecalculationPeriod": 0,
-                		"PaywallDescription": "",
-                		"PaywallShortDescription": "",
-                    "Property": null
+                    "ExpirationPeriodValue": 0
                   },
-                  {
-                    "Name": "Hello, world.",
-                    "ExternalKey": "1",
-                    "Active": true,
-                    "URL": "http://localhost:64653/?p=1",
-                    "Title": "Hello, world.",
-                    "Byline": "by Chris Wilson",
-                    "Description": "",
-                    "PublicationDate": "2014-06-13T09:35:07",
-                    "PricingGroup": {
-                      "PricingGroupID": "d0cb0c67-743f-41e7-bd90-dc3991743f90",
-                      "Name": "Default",
-                      "IsDefault": true,
-                      "PricingModel": "FixedPrice",
-                      "Price": 0.50,
-                      "ExpirationPeriodUnit": "Never",
-                      "ExpirationPeriodValue": 0
-                    },
-                    "PricingModel": "Inherit",
-                    "Price": 0.00,
+                  "PricingModel": "Inherit",
+                  "Price": 0.00,
+                  "ExpirationPeriodUnit": "Never",
+                  "ExpirationPeriodValue": 0,
+                  "TargetConversionRate": 0.00,
+                  "TargetConversionPriceFloor": 0.00,
+                  "TargetConversionHitsPerRecalculationPeriod": 0,
+                  "PaywallDescription": "",
+                  "PaywallShortDescription": "",
+                  "Property": null
+                },
+                {
+                  "Name": "Hello, world.",
+                  "ExternalKey": "1",
+                  "Active": true,
+                  "URL": "http://localhost:64653/?p=1",
+                  "Title": "Hello, world.",
+                  "Byline": "by Chris Wilson",
+                  "Description": "",
+                  "PublicationDate": "2014-06-13T09:35:07",
+                  "PricingGroup": {
+                    "PricingGroupID": "d0cb0c67-743f-41e7-bd90-dc3991743f90",
+                    "Name": "Default",
+                    "IsDefault": true,
+                    "PricingModel": "FixedPrice",
+                    "Price": 0.50,
                     "ExpirationPeriodUnit": "Never",
-                    "ExpirationPeriodValue": 0,
-                    "TargetConversionRate": 0.00,
-                    "TargetConversionPriceFloor": 0.00,
-                    "TargetConversionHitsPerRecalculationPeriod": 0,
-                		"PaywallDescription": "",
-                		"PaywallShortDescription": "",
-                    "Property": null
-                  }
+                    "ExpirationPeriodValue": 0
+                  },
+                  "PricingModel": "Inherit",
+                  "Price": 0.00,
+                  "ExpirationPeriodUnit": "Never",
+                  "ExpirationPeriodValue": 0,
+                  "TargetConversionRate": 0.00,
+                  "TargetConversionPriceFloor": 0.00,
+                  "TargetConversionHitsPerRecalculationPeriod": 0,
+                  "PaywallDescription": "",
+                  "PaywallShortDescription": "",
+                  "Property": null
+                }
               ]
         401:
           description: Authentication Failure
@@ -207,33 +207,33 @@ paths:
           examples:
             application/json: >
               {
-                  "Name": "Hello, world.",
-                  "ExternalKey": "1",
-                  "Active": true,
-                  "URL": "http://localhost:64653/?p=1",
-                  "Title": "Hello, world.",
-                  "Byline": "by Chris Wilson",
-                  "Description": "",
-                  "PublicationDate": "2014-06-13T09:35:07",
-                  "PricingGroup": {
-                    "PricingGroupID": "d0cb0c67-743f-41e7-bd90-dc3991743f90",
-                    "Name": "Default",
-                    "IsDefault": true,
-                    "PricingModel": "FixedPrice",
-                    "Price": 0.50,
-                    "ExpirationPeriodUnit": "Never",
-                    "ExpirationPeriodValue": 0
-                  },
-                  "PricingModel": "Inherit",
-                  "Price": 0.00,
+                "Name": "Hello, world.",
+                "ExternalKey": "1",
+                "Active": true,
+                "URL": "http://localhost:64653/?p=1",
+                "Title": "Hello, world.",
+                "Byline": "by Chris Wilson",
+                "Description": "",
+                "PublicationDate": "2014-06-13T09:35:07",
+                "PricingGroup": {
+                  "PricingGroupID": "d0cb0c67-743f-41e7-bd90-dc3991743f90",
+                  "Name": "Default",
+                  "IsDefault": true,
+                  "PricingModel": "FixedPrice",
+                  "Price": 0.50,
                   "ExpirationPeriodUnit": "Never",
-                  "ExpirationPeriodValue": 0,
-                  "TargetConversionRate": 0.00,
-                  "TargetConversionPriceFloor": 0.00,
-                  "TargetConversionHitsPerRecalculationPeriod": 0,
-              		"PaywallDescription": "",
-              		"PaywallShortDescription": "",
-                  "Property": null
+                  "ExpirationPeriodValue": 0
+                },
+                "PricingModel": "Inherit",
+                "Price": 0.00,
+                "ExpirationPeriodUnit": "Never",
+                "ExpirationPeriodValue": 0,
+                "TargetConversionRate": 0.00,
+                "TargetConversionPriceFloor": 0.00,
+                "TargetConversionHitsPerRecalculationPeriod": 0,
+                  "PaywallDescription": "",
+                  "PaywallShortDescription": "",
+                "Property": null
               }
         401:
           description: Authentication Failure
