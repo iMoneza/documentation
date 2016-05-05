@@ -29,91 +29,92 @@ For example.
 The `iMoneza.paywall.init` method initializes the iMoneza paywall. There are two parameters passed to the method. The first is a Resource Access API key. The second is a list of custom configuration options for the page. The custom configuration options will override any settings defined on the [Paywall Settings](https://manageui.imoneza.com/PaywallSettings/Edit) page.
 
 The full list of custom configuration options that can be passed in looks like:
-```javascript
+
+```JSON
 {
-	resourceKey: '',
-	resourceURL: '',
-	desktopPaywallType: '',
-	mobilePaywallType: '',
-	mobileMaxWidth: 0,
-	embeddedAdBlockerDetection: {
-		element: '',
-		zIndex: 0,
-		openWarning: function (title, message) { },
-		closeWarning: function () { },
-		openDialog: function (title, message) { },
-		closeDialog: function () { },
-		onWarningOpened: function (title, message) { },
-		onWarningClosed: function () { },
-		onDialogOpened: function (title, message) { },
-		onDialogClosed: function () { }
-	},
-	embeddedPaywall: {
-		element: '',
-		cover: {
-			backgroundColor: '',
-			visibleHeight: 0,
-			visibleHeightMode: '',
-			zIndex: 0
-		},
-		frame: {
-			zIndex: 0
-		},
-		icon: {
-		},
-		open: function (url, isAdSupported, adSupportedMessageTitle, adSupportedMessage) { },
-		updateHeight: function (heightData) { },
-		close: function (url) { },
-		onOpened: function () { },
-		onHeightUpdated: function (heightData) { },
-		onClosed: function () { }
-	},
-	embeddedWallet: {
-		element: '',
-		zIndex: 0,
-		adSupportedMessage: '',
-		badConfigMessage: '',
-		freeMessage: '',
-		denyMessage: '',
-		propertyUserMessage: '',
-		purchaseMessage: '',
-		quotaMessage: '',
-		spiderMessage: '',
-		subscriptionMessage: '',
-		unknownMessage: '',
-		quotaSummaryMessage: '',
-		open: function () { },
-		update: function (userData) { },
-		updateHeight: function (heightData) { },
-		close: function () { },
-		onOpened: function () { },
-		onUpdated: function (userData) { },
-		onHeightUpdated: function (heightData) { },
-		onClosed: function () { }
-	},
-	embeddedConfirmation: {
-		element: '',
-		zIndex: 0,
-		open: function (title, message) { },
-		close: function () { },
-		onOpened: function (title, message) { },
-		onClosed: function () { }
-	},
-	modalFrame: {
-		open: function (url) { },
-		updateHeight: function (heightData) { },
-		close: function () { },
-		zIndex: 0
-	},
-	modalPaywall: {
-		open: function (url) { },
-		close: function () { }
-	},
-	accessGranted: function (resourceAccessData) { },
-	accessDenied: function (resourceAccessData) { },
-	getOriginalURL: function () { },
-	getAccessMessage: function (resourceAccessData) { },
-	closeURL: ''
+  resourceKey: '',
+  resourceURL: '',
+  desktopPaywallType: '',
+  mobilePaywallType: '',
+  mobileMaxWidth: 0,
+  embeddedAdBlockerDetection: {
+    element: '',
+    zIndex: 0,
+    openWarning: function (title, message) { },
+    closeWarning: function () { },
+    openDialog: function (title, message) { },
+    closeDialog: function () { },
+    onWarningOpened: function (title, message) { },
+    onWarningClosed: function () { },
+    onDialogOpened: function (title, message) { },
+    onDialogClosed: function () { }
+  },
+  embeddedPaywall: {
+    element: '',
+    cover: {
+      backgroundColor: '',
+      visibleHeight: 0,
+      visibleHeightMode: '',
+      zIndex: 0
+    },
+    frame: {
+      zIndex: 0
+    },
+    icon: {
+    },
+    open: function (url, isAdSupported, adSupportedMessageTitle, adSupportedMessage) { },
+    updateHeight: function (heightData) { },
+    close: function (url) { },
+    onOpened: function () { },
+    onHeightUpdated: function (heightData) { },
+    onClosed: function () { }
+  },
+  embeddedWallet: {
+    element: '',
+    zIndex: 0,
+    adSupportedMessage: '',
+    badConfigMessage: '',
+    freeMessage: '',
+    denyMessage: '',
+    propertyUserMessage: '',
+    purchaseMessage: '',
+    quotaMessage: '',
+    spiderMessage: '',
+    subscriptionMessage: '',
+    unknownMessage: '',
+    quotaSummaryMessage: '',
+    open: function () { },
+    update: function (userData) { },
+    updateHeight: function (heightData) { },
+    close: function () { },
+    onOpened: function () { },
+    onUpdated: function (userData) { },
+    onHeightUpdated: function (heightData) { },
+    onClosed: function () { }
+  },
+  embeddedConfirmation: {
+    element: '',
+    zIndex: 0,
+    open: function (title, message) { },
+    close: function () { },
+    onOpened: function (title, message) { },
+    onClosed: function () { }
+  },
+  modalFrame: {
+    open: function (url) { },
+    updateHeight: function (heightData) { },
+    close: function () { },
+    zIndex: 0
+  },
+  modalPaywall: {
+    open: function (url) { },
+    close: function () { }
+  },
+  accessGranted: function (resourceAccessData) { },
+  accessDenied: function (resourceAccessData) { },
+  getOriginalURL: function () { },
+  getAccessMessage: function (resourceAccessData) { },
+  closeURL: ''
 }
 ```
 
@@ -123,8 +124,8 @@ The following options can be specified as properties on the root of an options o
 | -------- | ----------- | ---------------- |
 | resourceKey | The external key used to identify this resource. | 50 Chars Max, If left blank, the current URL will be used. |
 | resourceURL | The URL for this resource | By default, will be the current document URL. |
-| desktopPaywallType | The type of paywall to display at desktop resolutions | Value can be 'Modal', 'Redirect', or 'Embedded' |
-| mobilePaywallType | The type of paywall to display at mobile resolutions | Value can be 'Modal', 'Redirect', or 'Embedded' |
+| desktopPaywallType | The type of paywall to display at desktop resolutions | Value can be `Modal`, `Redirect`, or `Embedded` |
+| mobilePaywallType | The type of paywall to display at mobile resolutions | Value can be `Modal`, `Redirect`, or `Embedded` |
 | mobileMaxWidth | Resolutions with a width less than or equal to this value will be considered mobile. | |
 | accessGranted | A callback function for when the user is granted access to the resource | |
 | accessDenied | A callback function for when the user is denied access to the resource | |
@@ -142,9 +143,11 @@ iMoneza.paywall.init('744935CD-D8D9-E311-B48B-BC305BD0D54E', {
 ```
 
 **Example Using an `accessGranted` Callback**
-The `accessGranted` function is called when access to a page is granted via client-side access control. A single object is passed to the callback function containing data about the access request, including current quota data (if applicable), subscription data, and single purchase data. Basic user data is also passed along, as is the reason why access is granted.
+The `accessGranted` function is called when access to a page is granted via client-side access control. A single object is passed to the callback function containing data about the access request, including current quota/meter data (if applicable), subscription data, and single purchase data. Basic user data is also passed along, as is the reason why access is granted.
 
-This example displays whether or not the user is logged in. It then displays the reason why they have access to the page. If a quota is enforced, it displays how many quota hits the user has and how many they are allowed.
+This example displays whether or not the user is logged in. It then displays the reason why they have access to the page. If a quota/meter is enforced, it displays how many quota/meter hits the user has and how many they are allowed.
+
+*This example assumes that jQuery is available in the current scope as the `$` variable.*
 
 ```javascript
 iMoneza.paywall.init('744935CD-D8D9-E311-B48B-BC305BD0D54E', {
@@ -179,6 +182,8 @@ iMoneza.paywall.init('744935CD-D8D9-E311-B48B-BC305BD0D54E', {
 The `accessDenied` function is called when access to a page is denied. The same object is passed to this function as to the `accessGranted` function.
 
 This example display the user's user name (if they're logged in) and tells them they do not have access to the page.
+
+*This example assumes that jQuery is available in the current scope as the `$` variable.*
 
 ```javascript
 iMoneza.paywall.init('744935CD-D8D9-E311-B48B-BC305BD0D54E', {

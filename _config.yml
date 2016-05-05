@@ -8,6 +8,9 @@ exclude: ['README.md']
 sass:
     sass_dir: _sass
 
+kramdown:
+  input: GFM
+  
 defaults:
   -
     scope:
