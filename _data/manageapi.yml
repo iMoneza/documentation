@@ -310,7 +310,7 @@ paths:
           description: The price of the resource
           type: "number"
           required: false
-        - name: ExperiationPeriodUnit
+        - name: ExpirationPeriodUnit
           in: formData
           description: Expiration Period Unit
           enum: ["Never", "Years", "Months", "Weeks", "Days"]

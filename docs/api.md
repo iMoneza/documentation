@@ -34,34 +34,34 @@ will remain the same, only the `Title` will be changed.  The `ExternalKey` canno
 To change the pricing group that a resource belongs to, the pricing group ID should be sent. All other data sent in 
 a `PricingGroup` object will be ignored.  For instance, the following would change the pricing group:
 
-	{
-	  "PricingGroup": {
-	    "PricingGroupID": "15bf02c5-d106-e411-acf1-bc305bd0d54e"
-	  }
-	}
+    {
+      "PricingGroup": {
+        "PricingGroupID": "15bf02c5-d106-e411-acf1-bc305bd0d54e"
+      }
+    }
 
 Pricing tiers are stored as an array called `ResourcePricingTiers`. If that object is null or not-defined, pricing tiers 
 are not updated; if that array is present, then all existing pricing tiers are replaced by the array. So if any pricing 
 tiers are set, then all pricing tiers must be set. For example:
 
     {
-	  "ExternalKey": "Article1",
-	  "ResourcePricingTiers": [
-		{
-		  "Tier": 0,
-		  "Price": 0.00
-		},
-		{
-		  "Tier": 2,
-		  "Price": 0.18
-		},
-		{
-		  "Tier": 5,
-		  "Price": 0.50
-		},
-		{
-		  "Tier": 10,
-		  "Price": 0.72
-		}
-	  ]
-	}
+      "ExternalKey": "Article1",
+      "ResourcePricingTiers": [
+        {
+          "Tier": 0,
+          "Price": 0.00
+        },
+        {
+          "Tier": 2,
+          "Price": 0.18
+        },
+        {
+          "Tier": 5,
+          "Price": 0.50
+        },
+        {
+          "Tier": 10,
+          "Price": 0.72
+        }
+      ]
+    }
