@@ -28,10 +28,10 @@ rules to properly validate users.
 Let's look at some of the details for using an iMoneza API.
 
 **DATA FORMAT**  
-The APIs support both JSON and XML data. When a client makes an API request, the HTTP `Content-Type` header is used to 
+The APIs support JSON data. When a client makes an API request, the HTTP `Content-Type` header is used to 
 indicate the format of the payload. Likewise, the client can use the `Accept` header to indicate the format of the data 
-returned from the call. Values of `application/json` and `text/json` will return JSON; values of `application/xml` and 
-`text/xml` will return XML.
+returned from the call. Values of `application/json` and `text/json` will return JSON.  If you are unable to parse JSON,
+please contact us.  (We do have an undocumented/unsupported XML content type.)
 
 **API KEYS**  
 An iMoneza property can have an unlimited number of API key sets issued by iMoneza. Each key set consists of an access 
