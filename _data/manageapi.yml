@@ -231,8 +231,8 @@ paths:
                 "TargetConversionRate": 0.00,
                 "TargetConversionPriceFloor": 0.00,
                 "TargetConversionHitsPerRecalculationPeriod": 0,
-                  "PaywallDescription": "",
-                  "PaywallShortDescription": "",
+                "PaywallDescription": "",
+                "PaywallShortDescription": "",
                 "Property": null
               }
         401:
