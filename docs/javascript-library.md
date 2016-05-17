@@ -237,7 +237,7 @@ You can optionally pass a `returnURL` parameter to specify the URL the user shou
 
 You have programatic access to the details of the selected Resource via the ResourceAccessDTO object.
 
-####ResourceAccessDTO Response Object
+####ResourceAccess Response Object
 ```javascript
 {
   "UserToken": "635f9d47-3416-40bc-b9f0-cb65459852ae|635978154112661889|mGhURnAejYjKmw0UGVK5QRYCJbgIxFBn8CeCrC82Q",
@@ -298,7 +298,7 @@ The following options can be specified as properties on the root of an options o
 | AdSupportedMessageTitle | Defined by Merchant | |
 | AdSupportedMessage | Defined by Merchant | |
 
-####AccessReason Enum
+####AccessReason Values
 - Deny
 - Quota
 - Subscription
@@ -310,7 +310,9 @@ The following options can be specified as properties on the root of an options o
 - Spider
 - AdSupported
 
-####UserDTO Response Object
+###Succsessful Grant
+
+####userData Response Object
 ```javascript
 {
   "UserToken": "",
