@@ -298,6 +298,18 @@ The following options can be specified as properties on the root of an options o
 | AdSupportedMessageTitle | Defined by Merchant | |
 | AdSupportedMessage | Defined by Merchant | |
 
+####AccessReason Enum
+- Deny
+- Quota
+- Subscription
+- Purchase
+- Free
+- PropertyUser
+- BadConfig
+- UnknownResource
+- Spider
+- AdSupported
+
 ####UserDTO Response Object
 ```javascript
 {
