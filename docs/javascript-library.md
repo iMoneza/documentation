@@ -180,7 +180,7 @@ iMoneza.paywall.init('744935CD-D8D9-E311-B48B-BC305BD0D54E', {
 **Example Using the `accessDenied` Callback**
 The `accessDenied` function is called when access to a page is denied. The same object is passed to this function as to the `accessGranted` function.
 
-This example display the user's user name (if they're logged in) and tells them they do not have access to the page.
+This example displays the user's user name (if they're logged in) and tells them they do not have access to the page.
 
 ```javascript
 iMoneza.paywall.init('744935CD-D8D9-E311-B48B-BC305BD0D54E', {
