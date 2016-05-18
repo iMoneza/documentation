@@ -30,8 +30,9 @@ The `iMoneza.paywall.init` method initializes the iMoneza paywall. There are two
 
 The full list of custom configuration options that can be passed in looks like:
 
-####PaywallSettings Config Object (and javascript functions)
-```javascript
+#### PaywallSettings Config Object (and javascript functions)
+
+```JSON
 {
   "resourceKey": "",
   "resourceURL": "",
@@ -233,12 +234,13 @@ The `logOut` method will log out the current user. It will perform a redirect to
 
 You can optionally pass a `returnURL` parameter to specify the URL the user should be redirected to after they've been logged out. By default, they'll be returned to the page from which they initiated the logout.
 
-###Paywall PurchaseOptions
+### Paywall PurchaseOptions
 
 You have programatic access to the details of the selected Resource via the ResourceAccessDTO object.
 
-####ResourceAccess Response Object
-```javascript
+#### ResourceAccess Response Object
+
+```JSON
 {
   "UserToken": "635f9d47-3416-40bc-b9f0-cb65459852ae|635978154112661889|mGhURnAejYjKmw0UGVK5QRYCJbgIxFBn8CeCrC82Q",
   "PropertyName": "Test Newspaper",
@@ -298,7 +300,7 @@ The following options can be specified as properties on the root of an options o
 | AdSupportedMessageTitle | Defined by Merchant | |
 | AdSupportedMessage | Defined by Merchant | |
 
-####AccessReason Values
+#### AccessReason Values
 - Deny
 - Quota
 - Subscription
@@ -310,10 +312,11 @@ The following options can be specified as properties on the root of an options o
 - Spider
 - AdSupported
 
-###Succsessful Grant
+### Successful Grant
 
-####userData Response Object
-```javascript
+#### userData Response Object
+
+```JSON
 {
   "UserToken": "",
   "UserName": "",
@@ -335,8 +338,9 @@ The following options can be specified as properties on the root of an options o
 | WalletBalance | Authenticated User's Wallet Balance | |
 | PictureURL | Authenticated User's Logo | |
 
-####sendHeight() HeightData
-```javascript
+#### sendHeight() HeightData
+
+```JSON
 {
   "clientHeight": 0,
   "scrollHeight": 0,
@@ -352,9 +356,9 @@ The following options can be specified as properties on the root of an options o
 | clientHeight | document.documentElement.scrollHeight |  |
 | clientHeight | document.documentElement.offsetHeight |  |
 
-###Examples
+### Examples
 
-####Custom Embedded Elements
+#### Custom Embedded Elements
 
   * Custom embedded confirmation
 
@@ -386,9 +390,10 @@ embeddedAdBlockerDetection.openDialog
 embeddedAdBlockerDetection.openDialog
 ``` 
 
-####Setting resourceKey based on URL parameter or unique ID
+#### Setting resourceKey based on URL parameter or unique ID
 
   * URL
+  
 ```html
 <html>
 <head>
@@ -410,6 +415,7 @@ embeddedAdBlockerDetection.openDialog
 
 
   * Unique Id
+  
 ```html
 <html>
 <head>
@@ -429,19 +435,19 @@ embeddedAdBlockerDetection.openDialog
 </html>
 ```
 
-####Loading page content via AJAX in onAccessGranted
+#### Loading page content via AJAX in onAccessGranted
 
-####Resizing a custom modal implementation
+#### Resizing a custom modal implementation
 
 ```javascript
 modalFrame.updateHeight
 ```
 
-####Providing custom text in ```getAccessMessage```
+#### Providing custom text in ```getAccessMessage```
 
 Embedded Wallet "Purchase Message"
 
-```javascript
+```HTML
   <script src="https://cdn.imoneza.com/paywall.min.js"></script>
   <script type="text/javascript">
     iMoneza.paywall.init('b865156f-9e0d-48b6-a2a0-097456f689ec', 
@@ -458,9 +464,9 @@ Embedded Wallet "Purchase Message"
   </script>
 ```
 
-####Pagination ignorance
+#### Pagination ignorance
 
-Explain it.
+todo
 
 ```
 /news/long-article?page=1
@@ -468,6 +474,7 @@ Explain it.
 ```
 
   * Ignoring pagination
+  
 ```html
 <html>
 <head>
