@@ -15,6 +15,8 @@ There are also temporary user tokens. These are single-use tokens that can also 
 
 Resource Access API consumers (CMS plugins or custom coded websites) must receive, store, and transmit the user token. The user token is not designed to be interpreted by any consumer - any attempts to parse and extract data from the token are unsupported and might break in the future. Instead, just use the user token and Resource Access API to get data about a user.
 
+When the Resource Access API sends a user token to a consumer, it also sends an expiration date for the user token. When the consumer creates a cookie with the user token, it should set the cookie to expire at the specified date. If no expiration date is provided, the cookie should not have an expiration date (and therefore be non-persistent).
+
 ### Server-side Access Control
 
 Server-side access control is the ability of a web site or CMS to enforce access control at the server level, rather than relying entirely on the JavaScript Library running on the client side. Enforcing access control at the server level reduces user's ability to bypass access restrictions (like seeing the paywall).
@@ -35,7 +37,7 @@ The following is an overview of the redirection-based server-side resource acces
   * If the page request includes an `iMonezaTUT` parameter, a `GET` request to the endpoint `/api/TemporaryUserToken/{apiKey}/{temporaryUserToken}` is performed.  
   * Otherwise, a `GET` request to the endpoint `/api/Resource/{apiKey}/{resourceKey}?UserToken={userToken}&ResourceURL={url}` is performed.  The `userToken` is optional. This should be sent if it exists (having been previously set with a cookie).  
 3.	The CMS plugin processes the resource access data.  
-  * The returned data will include a `UserToken`. The CMS plugin should store this as a cookie.  
+  * The returned data will include a `UserToken` and `UserTokenExpirationDate`. The CMS plugin should store the `UserToken` as a cookie that expires at `UserTokenExpirationDate`. If the expiration date is empty, the cookie should be stored without an expiration date (a non-persistent or session cookie).
   * If the returned data includes a non-empty `AccessActionURL`, the CMS plugin should redirect the user to that URL.  In order for iMoneza to redirect back to the resource (or any other page), add a `get` parameter of `originalURL` that points to the destination after purchase. 
   * If the returned data does not include a non-empty `AccessActionURL`, the CMS plugin should serve the resource to the user.  
 
@@ -47,29 +49,29 @@ The following three use cases explain how the above control flow is used to secu
 
 1.	User requests page.  
 2.	Website calls Resource Access API endpoint `/api/Resource/{apiKey}/{resourceKey}` without a user token  
-3.	Resource Access API returns resource access data which contains `UserToken` and `AccessActionURL`.  
-4.	Website stores `UserToken` as a cookie.  
+3.	Resource Access API returns resource access data which contains `UserToken`, `UserTokenExpirationDate`, and `AccessActionURL`.  
+4.	Website stores `UserToken` as a cookie that expires at `UserTokenExpirationDate`.  
 5.	Website redirects user to `AccessActionURL`  
 6.	User authenticates at iMoneza website, processes purchase, and redirects back to original page with an `iMonezaTUT` appended to the URL.  
 7.	Website calls Resource Access API endpoint `/api/TemporaryUserToken/{apiKey}/{temporaryUserToken}` with the value from the `iMonezaTUT` parameter.  
-8.	Resource Access API returns resource access data which contains `UserToken` but not `AccessActionURL`.  
-9.	Website stores `UserToken` as a cookie.  
+8.	Resource Access API returns resource access data which contains `UserToken` and `UserTokenExpirationDate` but not `AccessActionURL`.  
+9.	Website stores `UserToken` as a cookie that expires at `UserTokenExpirationDate`.  
 10.	Website serves resource to user.  
 
 #### Use Case 2: Authenticated User Granted Access
 
 1.	User requests page.  
 2.	Website calls Resource Access API endpoint `/api/Resource/{apiKey}/{resourceKey}` with a user token (which was previously stored as a cookie).  
-3.	Resource Access API returns resource access data which contains a new `UserToken`.  
-4.	Website stores `UserToken`.  
+3.	Resource Access API returns resource access data which contains a new `UserToken` and `UserTokenExpirationDate`.  
+4.	Website stores `UserToken` as a cookie that expires at `UserTokenExpirationDate`. 
 5.	Website serves resource to user.  
 
 #### Use Case 3: Dynamic Resource Creation Spider Granted Access
 
 1.	Spider requests page with an `iMonezaTUT` appended to the URL.  
 2.	Website calls Resource Access API endpoint `/api/TemporaryUserToken/{apiKey}/{temporaryUserToken}` with the `iMonezaTUT`.  
-3.	Resource Access API returns resource access data which contains `UserToken`.  
-4.	Website stores `UserToken`.  
+3.	Resource Access API returns resource access data which contains `UserToken` and `UserTokenExpirationDate`.  
+4.	Website stores `UserToken` as a cookie that expires at `UserTokenExpirationDate`.
 5.	Website serves resource to spider.  
 
 ### AJAX-Based Approach
