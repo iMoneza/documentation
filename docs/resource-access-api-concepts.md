@@ -9,7 +9,7 @@ The Resource Access API places stronger requirements on API consumers than the R
 
 The user token is a piece of data that’s passed between the Resource Access API, Access UI, and the consumer’s web browser. It’s also used by API clients (CMS plugins) that enforce server-side access control. This token identifies a user, the time the token was generated, and an HMAC token to prevent tampering. It’s used to manage authentication state over the wide range of servers, clients, and systems using iMoneza.
 
-The user token is designed to be transparent to end users. It can only be retrieved via the Access API, and is designed to be stored as a cookie.
+The user token is designed to be transparent to end users. It can only be retrieved via the Access API, and is designed to be stored as a cookie. To ensure consistent usage between server-side and client-side access control mechanisms, the cookie storing the user token should always be named `iMonezaUT`.
 
 There are also temporary user tokens. These are single-use tokens that can also be used by the Access API to return resource access data. However, a temporary user token cannot be stored as a cookie, as it’s immediately invalidated after the first time it’s used. However, the one-time Temporary User Token will return a user token which can be stored.
 
