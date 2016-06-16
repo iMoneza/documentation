@@ -9,7 +9,7 @@ The Resource Access API places stronger requirements on API consumers than the R
 
 The user token is a piece of data that’s passed between the Resource Access API, Access UI, and the consumer’s web browser. It’s also used by API clients (CMS plugins) that enforce server-side access control. This token identifies a user, the time the token was generated, and an HMAC token to prevent tampering. It’s used to manage authentication state over the wide range of servers, clients, and systems using iMoneza.
 
-The user token is designed to be transparent to end users. It can only be retrieved via the Access API, and is designed to be stored as a cookie.
+The user token is designed to be transparent to end users. It can only be retrieved via the Access API, and is designed to be stored as a cookie. To ensure consistent usage between server-side and client-side access control mechanisms, the cookie storing the user token should always be named `iMonezaUT`.
 
 There are also temporary user tokens. These are single-use tokens that can also be used by the Access API to return resource access data. However, a temporary user token cannot be stored as a cookie, as it’s immediately invalidated after the first time it’s used. However, the one-time Temporary User Token will return a user token which can be stored.
 
@@ -35,9 +35,9 @@ The following is an overview of the redirection-based server-side resource acces
 1.	The user requests a page.  
 2.	The CMS plugin calls the Resource Access API, which returns resource access data. 
   * If the page request includes an `iMonezaTUT` parameter, a `GET` request to the endpoint `/api/TemporaryUserToken/{apiKey}/{temporaryUserToken}` is performed.  
-  * Otherwise, a `GET` request to the endpoint `/api/Resource/{apiKey}/{resourceKey}?UserToken={userToken}&ResourceURL={url}` is performed.  The `userToken` is optional. This should be sent if it exists (having been previously set with a cookie).  
+  * Otherwise, a `GET` request to the endpoint `/api/Resource/{apiKey}/{resourceKey}?UserToken={userToken}&ResourceURL={url}` is performed.  The `userToken` is optional, but should be sent if it exists (having been previously set with the `iMonezaUT` cookie).  
 3.	The CMS plugin processes the resource access data.  
-  * The returned data will include a `UserToken` and `UserTokenExpirationDate`. The CMS plugin should store the `UserToken` as a cookie that expires at `UserTokenExpirationDate`. If the expiration date is empty, the cookie should be stored without an expiration date (a non-persistent or session cookie).
+  * The returned data will include a `UserToken` and `UserTokenExpiration`. The CMS plugin should store the `UserToken` as a cookie named `iMonezaUT` that expires at `UserTokenExpiration`. If the expiration date is empty, the cookie should be stored without an expiration date (a non-persistent or session cookie).
   * If the returned data includes a non-empty `AccessActionURL`, the CMS plugin should redirect the user to that URL.  In order for iMoneza to redirect back to the resource (or any other page), add a `get` parameter of `originalURL` that points to the destination after purchase. 
   * If the returned data does not include a non-empty `AccessActionURL`, the CMS plugin should serve the resource to the user.  
 
@@ -49,29 +49,29 @@ The following three use cases explain how the above control flow is used to secu
 
 1.	User requests page.  
 2.	Website calls Resource Access API endpoint `/api/Resource/{apiKey}/{resourceKey}` without a user token  
-3.	Resource Access API returns resource access data which contains `UserToken`, `UserTokenExpirationDate`, and `AccessActionURL`.  
-4.	Website stores `UserToken` as a cookie that expires at `UserTokenExpirationDate`.  
+3.	Resource Access API returns resource access data which contains `UserToken`, `UserTokenExpiration`, and `AccessActionURL`.  
+4.	Website stores `UserToken` as a cookie named `iMonezaUT` that expires at `UserTokenExpiration`.  
 5.	Website redirects user to `AccessActionURL`  
 6.	User authenticates at iMoneza website, processes purchase, and redirects back to original page with an `iMonezaTUT` appended to the URL.  
 7.	Website calls Resource Access API endpoint `/api/TemporaryUserToken/{apiKey}/{temporaryUserToken}` with the value from the `iMonezaTUT` parameter.  
-8.	Resource Access API returns resource access data which contains `UserToken` and `UserTokenExpirationDate` but not `AccessActionURL`.  
-9.	Website stores `UserToken` as a cookie that expires at `UserTokenExpirationDate`.  
+8.	Resource Access API returns resource access data which contains `UserToken` and `UserTokenExpiration` but not `AccessActionURL`.  
+9.	Website stores `UserToken` as a cookie named `iMonezaUT` that expires at `UserTokenExpiration`.  
 10.	Website serves resource to user.  
 
 #### Use Case 2: Authenticated User Granted Access
 
 1.	User requests page.  
 2.	Website calls Resource Access API endpoint `/api/Resource/{apiKey}/{resourceKey}` with a user token (which was previously stored as a cookie).  
-3.	Resource Access API returns resource access data which contains a new `UserToken` and `UserTokenExpirationDate`.  
-4.	Website stores `UserToken` as a cookie that expires at `UserTokenExpirationDate`. 
+3.	Resource Access API returns resource access data which contains a new `UserToken` and `UserTokenExpiration`.  
+4.	Website stores `UserToken` as a cookie named `iMonezaUT` that expires at `UserTokenExpiration`. 
 5.	Website serves resource to user.  
 
 #### Use Case 3: Dynamic Resource Creation Spider Granted Access
 
 1.	Spider requests page with an `iMonezaTUT` appended to the URL.  
 2.	Website calls Resource Access API endpoint `/api/TemporaryUserToken/{apiKey}/{temporaryUserToken}` with the `iMonezaTUT`.  
-3.	Resource Access API returns resource access data which contains `UserToken` and `UserTokenExpirationDate`.  
-4.	Website stores `UserToken` as a cookie that expires at `UserTokenExpirationDate`.
+3.	Resource Access API returns resource access data which contains `UserToken` and `UserTokenExpiration`.  
+4.	Website stores `UserToken` as a cookie named `iMonezaUT` that expires at `UserTokenExpiration`.
 5.	Website serves resource to spider.  
 
 ### AJAX-Based Approach
