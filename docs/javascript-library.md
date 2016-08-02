@@ -220,14 +220,6 @@ iMoneza.paywall.init({'744935CD-D8D9-E311-B48B-BC305BD0D54E', {
   });
 ```
 
-### `openModalFrame` Method
-
-The `openModalFrame` method opens the modal frame with a URL you specify. It takes one parameter, the URL to open in the IFRAME inside the modal frame.
-
-### `closeModalFrame` Method
-
-The `closeModalFrame` method closes the modal frame that was previously opened with a call to `openModalFrame`. It takes no parameters.
-
 ### `logOut` Method
 
 The `logOut` method will log out the current user. It will perform a redirect to iMoneza to log the user out on both iMoneza and the your site.
@@ -236,7 +228,7 @@ You can optionally pass a `returnURL` parameter to specify the URL the user shou
 
 ### Paywall PurchaseOptions
 
-You have programatic access to the details of the selected Resource via the ResourceAccessDTO object.
+You have programatic access to the details of the selected Resource via the ResourceAccess object.
 
 #### ResourceAccess Response Object
 
@@ -289,9 +281,9 @@ The following options can be specified as properties on the root of an options o
 | IsAnonymousUser | True if not Authenticated | |
 | WalletBalance | Authenticated User's Wallet Balance | |
 | PictureURL | Authenticated User's Logo | |
-| Quota | Complex Object | |
-| Subscription | Complex Object | |
-| Purchase | Complex Object | |
+| Quota | Complex Object | See below |
+| Subscription | Complex Object | See below |
+| Purchase | Complex Object | See below |
 | AccessReason | Textual Access Reason | Can be "Free" or "Purchase" or "Deny" and others |
 | AccessActionURL | | |
 | AdBlockerStatus | Status of client AdBlocker | Can be "AdBlockerNotDetected" or "AdBlockerDetected" and others |
@@ -299,6 +291,26 @@ The following options can be specified as properties on the root of an options o
 | IsAdSupported | Access is Ad Supported | |
 | AdSupportedMessageTitle | Defined by Merchant | |
 | AdSupportedMessage | Defined by Merchant | |
+
+#### Quota Object
+
+| Key Name | Description | Additional Notes |
+| -------- | ----------- | ---------------- |
+| IsEnabled | If true, metered access is enabled | A Property-wide setting |
+| HitCount | Increments for each Quota-enabled resource | A User-specific setting |
+| AllowedHits | Maximum number of free Resources under Quota per User | A User-specific setting |
+| PeriodStartDate | The beginning of the month for considering a Quota |  |
+| PeriodName |  |  |
+| IsMet | Will be set to 'true' is Quota is met |  |
+
+#### Subscription Object
+
+| Key Name | Description | Additional Notes |
+| -------- | ----------- | ---------------- |
+| IsExpired | If true, access to Resources in this group will not be granted |  |
+| ExpirationDate | End date of periodic subscription |  |
+| IsCurrent | If true, it is a valid subscription |  |
+| SubscriptionGroupID | The unique identifier of a Subscription | GUID |
 
 #### AccessReason Values
 - Deny
@@ -340,6 +352,8 @@ The following options can be specified as properties on the root of an options o
 
 #### sendHeight() HeightData
 
+A MutationObserver watches the DOM of the embedded paywall.  Upon height changes, the parent page may respond to changes in height.  The sendHeight() function is called with new height values.
+
 ```JSON
 {
   "clientHeight": 0,
@@ -348,49 +362,147 @@ The following options can be specified as properties on the root of an options o
 }
 ```
 
+#### Example
+
+```javascript
+var updateEmbeddedWindowHeight = function (heightData) {
+
+    stopEmbeddedDialogMutationObserver();
+
+    if (!heightData)
+        heightData = _lastHeightData;
+
+    _lastHeightData = heightData;
+
+    if (heightData.offsetHeight > 0)
+        _embeddedWindowLowerCover.innerHTML = '';
+
+    var paywallHeight = heightData.offsetHeight;
+    var expanderHeight = parseInt(_embeddedWindowExpander.style.height.replace('px', ''));
+    var paywalledElementHeight = _embeddedWindowElement.offsetHeight - expanderHeight;
+    var lowerCoverTop = parseInt(_embeddedWindowFrameWrapper.style.paddingTop.replace('px', '')) + paywallHeight;
+    var lowerCoverHeight = paywalledElementHeight - lowerCoverTop;
+    var visibleHeight = 0;
+    var dialogHeight = document.getElementById('imoneza-embedded-paywall-dialog').clientHeight;
+
+    var coverBackgroundColor = iMoneza.utilities.hexToRGB(_options.embeddedPaywall.cover.backgroundColor);
+
+    if (lowerCoverTop > paywalledElementHeight) {
+        lowerCoverHeight = 0;
+        expanderHeight = lowerCoverTop - paywalledElementHeight;
+    }
+
+    if (_options.embeddedPaywall.cover.visibleHeightMode == "Percent")
+        visibleHeight = (paywalledElementHeight / 100 * _options.embeddedPaywall.cover.visibleHeight);
+    else
+        visibleHeight = _options.embeddedPaywall.cover.visibleHeight;
+
+    if (dialogHeight == 0) {
+        _embeddedWindowFrameWrapper.style.background = 'linear-gradient(to bottom, rgba(' + coverBackgroundColor.r + ',' + coverBackgroundColor.g + ',' + coverBackgroundColor.b + ',0) 0%,rgba(' + coverBackgroundColor.r + ',' + coverBackgroundColor.g + ',' + coverBackgroundColor.b + ',1) 100%)';
+    } else {
+        var pct = (visibleHeight / (visibleHeight + dialogHeight)) * 100;
+        _embeddedWindowFrameWrapper.style.background = 'linear-gradient(to bottom, rgba(' + coverBackgroundColor.r + ',' + coverBackgroundColor.g + ',' + coverBackgroundColor.b + ',0) 0%,rgba(' + coverBackgroundColor.r + ',' + coverBackgroundColor.g + ',' + coverBackgroundColor.b + ',1) ' + pct + '%)';
+    }
+
+    document.getElementById('imoneza-embedded-paywall').height = paywallHeight + 'px';
+
+    _embeddedWindowLowerCoverWrapper.style.top = lowerCoverTop + 'px';
+    _embeddedWindowLowerCover.style.height = lowerCoverHeight + 'px';
+    _embeddedWindowExpander.style.height = expanderHeight + 'px';
+
+    _embeddedWindowFrameWrapper.style.paddingTop = visibleHeight + 'px';
+
+    startEmbeddedDialogMutationObserver();
+};
+```
+
 The following options can be specified as properties on the root of an options object:
 
 | Key Name | Description | Additional Notes |
 | -------- | ----------- | ---------------- |
 | clientHeight | document.documentElement.clientHeight |  |
-| clientHeight | document.documentElement.scrollHeight |  |
-| clientHeight | document.documentElement.offsetHeight |  |
+| scrollHeight | document.documentElement.scrollHeight |  |
+| offsetHeight | document.documentElement.offsetHeight |  |
 
 ### Examples
 
-#### Custom Embedded Elements
+#### Custom Function Overrides
 
-  * Custom embedded confirmation
+* Custom embedded confirmation
 
-```javascript
-embeddedConfirmation.open
+Once a user has been "Granted access" to a Resource, you may customize the user experience by making use of the `embeddedConfirmation.open(message, title)` function.
+
+```html
+<head>
+  <title>Our Website</title>
+  <script src="https://cdn.imoneza.com/paywall.min.js"></script>
+  <script type="text/javascript">
+        iMoneza.paywall.init('b865156f-9e0d-48b6-a2a0-097456f689ec', {
+            embeddedConfirmation: {
+                open(title, message) {
+                    alert(message);
+                }
+            }
+        });
+</script>
+</head>
 ```
 
-```javascript
-embeddedConfirmation.close
+* Custom embedded ad blocker warning confirmation when ```NoCostAdBlockerAction=ShowWarning```
+
+When ad blocker detection is set to "Show Warning", you may customize the user experience by making use of the `embeddedAdBlockerDetection.openWarning(message, title)` function.
+
+```html
+<div id="customAdBlockerWarning" style="display: none;">
+    <h3 id="customAdBlockerWarningTitle"></h3>
+    <p id="customAdBlockerWarningMessage"></p>
+    <div onclick="$('#customAdBlockerWarning').hide();">Close</div>
+</div>
+
+<script type="text/javascript">
+  iMoneza.paywall.init('b865156f-9e0d-48b6-a2a0-097456f689ec', {
+      embeddedPaywall: {
+            element: '#content'
+        },
+      embeddedAdBlockerDetection: {
+            openWarning: function (title, message) {
+                $('#customAdBlockerWarningTitle').text(title);
+                $('#customAdBlockerWarningMessage').text(message);
+                $('#customAdBlockerWarning').show();
+            }
+          }
+      });
+</script>
 ```
 
-  * Custom embedded ad blocker warning confirmation when ```NoCostAdBlockerAction=ShowWarning```
 
-```javascript
-embeddedAdBlockerDetection.openWarning
+* Custom embedded ad blocker dialog when ```NoCostAdBlockerAction=RequireDisable```
+
+When ad blocker detection is set to "Require Disable", you may customize the user experience by making use of the `embeddedAdBlockerDetection.openDialog(message, title)` function.
+
+```html
+<div id="customAdBlockerWarning" style="display: none;">
+    <h3 id="customAdBlockerWarningTitle"></h3>
+    <p id="customAdBlockerWarningMessage"></p>
+    <div onclick="$('#customAdBlockerWarning').hide();">Close</div>
+</div>
+
+<script type="text/javascript">
+  iMoneza.paywall.init('b865156f-9e0d-48b6-a2a0-097456f689ec', {
+      embeddedPaywall: {
+      embeddedAdBlockerDetection: {
+            openDialog: function (title, message) {
+              alert(message);
+            }
+          }
+      });
+</script>
 ``` 
 
-```javascript
-embeddedAdBlockerDetection.closeWarning
-``` 
-
-  * Custom embedded ad blocker dialog when ```NoCostAdBlockerAction=RequireDisable```
-
-```javascript
-embeddedAdBlockerDetection.openDialog
-``` 
-
-```javascript
-embeddedAdBlockerDetection.openDialog
-``` 
 
 #### Setting resourceKey based on URL parameter or unique ID
+
+The resourceKey identifies the resource to iMoneza.  A resource key may be part of the URL parameters, such as www.mydomain.com/?id=1234321.  In this case, override the resourceKey based on the URL parameter.
 
   * URL
   
@@ -402,7 +514,7 @@ embeddedAdBlockerDetection.openDialog
   <script type="text/javascript">
     iMoneza.paywall.init('b865156f-9e0d-48b6-a2a0-097456f689ec', 
     {
-      resourceKey: "URL param"
+      resourceKey: "id=1234321"
     });
   </script>
 
@@ -412,7 +524,7 @@ embeddedAdBlockerDetection.openDialog
   </body>
 </html>
 ```
-
+A resource key may also be found in the DOM.  In this case, override resourceKey based on element ID (or path).
 
   * Unique Id
   
@@ -436,6 +548,30 @@ embeddedAdBlockerDetection.openDialog
 ```
 
 #### Loading page content via AJAX in onAccessGranted
+
+```javascript
+<script type="text/javascript">
+  iMoneza.paywall.init('b865156f-9e0d-48b6-a2a0-097456f689ec', {
+      embeddedPaywall: {
+          element: '#content',
+          cover: {
+              backgroundColor: '#E6E6FA',
+              visibleHeight: 300
+          }
+      },
+      embeddedConfirmation: {
+          element: '#content'
+      },
+      embeddedWallet: {
+          element: 'body'
+      },
+      accessGranted: function (data) {
+          // Supply your own service to load the full content upon accessGranted:
+          $('#content').load("/GetPageContent.ashx?FilePath=" + encodeURIComponent(window.location.pathname) + "&ResourceKey=" + iMoneza.paywall.getResourceKey() + "&ResourceURL=" + encodeURIComponent(window.location.href));
+      }
+  });
+</script>
+```
 
 #### Resizing a custom modal implementation
 
@@ -464,16 +600,17 @@ Embedded Wallet "Purchase Message"
   </script>
 ```
 
-#### Pagination ignorance
+#### Pagination Ignorance
 
-todo
+Some resources may span multiple "pages" but realistically are associated with a single resource.  To ignore differences in query string parameters, as with the below example, supply the base path with which to identify the resource. Below represents a Resource spanning 3 pages:
 
 ```
-/news/long-article?page=1
-/news/long-article?page=2
+www.mydomain.com/news/long-article?page=1
+www.mydomain.com/news/long-article?page=2
+www.mydomain.com/news/long-article?page=3
 ```
 
-  * Ignoring pagination
+Ignoring pagination for this Resource:
   
 ```html
 <html>
