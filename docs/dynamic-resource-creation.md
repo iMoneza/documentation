@@ -56,22 +56,22 @@ what is in the system, the resource will default to being unmanaged by iMoneza a
 
 Here’s a sample HTML page snippet with this XML block:
 
-    <html>
-        <head>
-            <title>Sample Page</title>
-            <script type="application/imoneza">
-                <Resource>
-                    <Name>Sample Page</Name>
-                    <Title>Sample Page</Title>
-                    <Description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras id elementum ante, ut aliquet tortor. Curabitur a facilisis odio, eu iaculis dolor. Pellentesque condimentum ut enim et pulvinar.</Description>
-                    <Byline>by John Doe</Byline>
-                    <PricingGroup>Default</PricingGroup>
-                    <PricingModel>FixedPrice</PricingModel>
-                    <Price>1.50</Price>
-                </Resource>
-            </script>
-        </head>
-        <body>
-           … additional content goes here …
-        </body>
-    </html>
+```html
+<head>
+    <title>Sample Page</title>
+    <script type="application/imoneza">
+        <Resource>
+            <Name>Sample Page</Name>
+            <Title>Sample Page</Title>
+            <Description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras id elementum ante, ut aliquet tortor. Curabitur a facilisis odio, eu iaculis dolor. Pellentesque condimentum ut enim et pulvinar.</Description>
+            <Byline>by John Doe</Byline>
+            <PricingGroup>Default</PricingGroup>
+            <PricingModel>FixedPrice</PricingModel>
+            <Price>1.50</Price>
+        </Resource>
+    </script>
+</head>
+<body>
+   … additional content goes here …
+</body>
+```
