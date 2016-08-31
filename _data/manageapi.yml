@@ -255,6 +255,12 @@ paths:
           type: "string"
           maxLength: 50
           required: true
+        - name: ExternalKey
+          in: formData
+          description: The external key or public identifier of a resource.
+          required: true
+          type: "string"
+          maxLength: 50
         - name: Name
           in: formData
           description: The internal name of the resource
