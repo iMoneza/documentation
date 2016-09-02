@@ -263,10 +263,11 @@ paths:
           maxLength: 50
         - name: Name
           in: formData
-          description: The internal name of the resource
+          description: The internal name of the resource (required only on creation)
           type: "string"
           maxLength: 50
           required: false
+          required: true
         - name: Active
           in: formData
           description: Boolean of whether this item is active
@@ -303,9 +304,9 @@ paths:
           required: false
         - name: PricingGroup
           in: formData
-          description: Update or set the pricing group for the resource (see special notes below)
+          description: Update or set the pricing group for the resource (required only on creation) (see special formatting notes below)
           type: "string"
-          required: false
+          required: true
         - name: PricingModel
           in: formData
           description: The resource pricing model
